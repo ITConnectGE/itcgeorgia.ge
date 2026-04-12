@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getAllGuides } from "@/components/RelatedPosts";
+import { guideIllustrations } from "@/components/illustrations/guides";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -76,26 +77,36 @@ export default async function GuidesPage({ params }: { params: Promise<{ lang: s
                   {tag}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {guides.map((guide) => (
-                    <Link
-                      key={guide.slug}
-                      href={guide.href}
-                      className="group bg-white border border-slate-200 rounded-xl p-5 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
-                    >
-                      <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-3">
-                        {guide.tag}
-                      </span>
-                      <h3 className="text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug mb-2">
-                        {guide.title}
-                      </h3>
-                      <p className="text-xs text-slate-400 leading-relaxed mb-3">
-                        {guide.description}
-                      </p>
-                      <span className="text-xs font-medium text-navy-600 group-hover:text-azure-600 transition-colors">
-                        {ka ? "წაკითხვა" : "Read"} &rarr;
-                      </span>
-                    </Link>
-                  ))}
+                  {guides.map((guide) => {
+                    const Illust = guideIllustrations[guide.slug];
+                    return (
+                      <Link
+                        key={guide.slug}
+                        href={guide.href}
+                        className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
+                      >
+                        {Illust && (
+                          <div className="h-36 border-b border-slate-100">
+                            <Illust className="w-full h-full" />
+                          </div>
+                        )}
+                        <div className="p-5">
+                          <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-2">
+                            {guide.tag}
+                          </span>
+                          <h3 className="text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug mb-1.5">
+                            {guide.title}
+                          </h3>
+                          <p className="text-xs text-slate-400 leading-relaxed mb-2">
+                            {guide.description}
+                          </p>
+                          <span className="text-xs font-medium text-navy-600 group-hover:text-azure-600 transition-colors">
+                            {ka ? "წაკითხვა" : "Read"} &rarr;
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             );

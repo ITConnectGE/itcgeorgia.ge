@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { RelatedPosts, getAllGuides } from "@/components/RelatedPosts";
+import { RDSIllustration } from "@/components/illustrations/guides";
 
 export async function generateMetadata({
   params,
@@ -79,29 +80,34 @@ export default async function RDSPage({
       {/* ── Hero ── */}
       <section className="py-16 sm:py-20 border-b border-slate-100 bg-gradient-to-b from-navy-50/40 to-white">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="max-w-3xl">
-            <Link
-              href={`/${lang}/guides/windows-licensing`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-azure-600 hover:text-azure-700 transition-colors mb-4"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-              </svg>
-              {ka ? "ლიცენზირების გზამკვლევი" : "Licensing Guide"}
-            </Link>
-            <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
-              {ka ? "დისტანციური წვდომა" : "Remote Access"}
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
-              {ka
-                ? "RDS — Remote Desktop Services ლიცენზირება"
-                : "RDS — Remote Desktop Services Licensing"}
-            </h1>
-            <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
-              {ka
-                ? "Remote Desktop Services საშუალებას აძლევს მომხმარებლებს სერვერზე დისტანციურად იმუშაონ. RDS მოითხოვს სპეციალურ ლიცენზიას — RDS CAL-ს — Windows Server CAL-ის გარდა. გაიგეთ როდის არის საჭირო, რა ტიპები არსებობს და როგორ გამოითვალოთ ღირებულება."
-                : "Remote Desktop Services lets users work remotely on a server. RDS requires a special license — the RDS CAL — in addition to the Windows Server CAL. Learn when it's required, what types exist, and how to calculate costs."}
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <Link
+                href={`/${lang}/guides/windows-licensing`}
+                className="inline-flex items-center gap-1 text-xs font-medium text-azure-600 hover:text-azure-700 transition-colors mb-4"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                {ka ? "ლიცენზირების გზამკვლევი" : "Licensing Guide"}
+              </Link>
+              <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
+                {ka ? "დისტანციური წვდომა" : "Remote Access"}
+              </p>
+              <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
+                {ka
+                  ? "RDS — Remote Desktop Services ლიცენზირება"
+                  : "RDS — Remote Desktop Services Licensing"}
+              </h1>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
+                {ka
+                  ? "Remote Desktop Services საშუალებას აძლევს მომხმარებლებს სერვერზე დისტანციურად იმუშაონ. RDS მოითხოვს სპეციალურ ლიცენზიას — RDS CAL-ს — Windows Server CAL-ის გარდა. გაიგეთ როდის არის საჭირო, რა ტიპები არსებობს და როგორ გამოითვალოთ ღირებულება."
+                  : "Remote Desktop Services lets users work remotely on a server. RDS requires a special license — the RDS CAL — in addition to the Windows Server CAL. Learn when it's required, what types exist, and how to calculate costs."}
+              </p>
+            </div>
+            <div className="hidden lg:block">
+              <RDSIllustration className="w-full max-w-sm mx-auto" />
+            </div>
           </div>
         </div>
       </section>

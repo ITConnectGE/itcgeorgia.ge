@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { guideIllustrations } from "@/components/illustrations/guides";
 
 type Post = {
   href: string;
   title: string;
   description: string;
   tag: string;
+  slug?: string;
 };
 
 export function RelatedPosts({
@@ -23,30 +25,39 @@ export function RelatedPosts({
           {title || (lang === "ka" ? "დაკავშირებული სტატიები" : "Related Articles")}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post) => (
-            <Link
-              key={post.href}
-              href={post.href}
-              className="group bg-white border border-slate-200 rounded-xl p-5 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
-            >
-              <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-3">
-                {post.tag}
-              </span>
-              <h3 className="text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug mb-2">
-                {post.title}
-              </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {post.description}
-              </p>
-            </Link>
-          ))}
+          {posts.map((post) => {
+            const Illust = post.slug ? guideIllustrations[post.slug] : null;
+            return (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
+              >
+                {Illust && (
+                  <div className="h-32 border-b border-slate-100">
+                    <Illust className="w-full h-full" />
+                  </div>
+                )}
+                <div className="p-5">
+                  <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-2">
+                    {post.tag}
+                  </span>
+                  <h3 className="text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug mb-1.5">
+                    {post.title}
+                  </h3>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    {post.description}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-// Central registry of all guides for cross-linking
 export function getAllGuides(lang: string) {
   const ka = lang === "ka";
   const p = `/${lang}/guides`;

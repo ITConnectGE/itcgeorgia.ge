@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { RelatedPosts, getAllGuides } from "@/components/RelatedPosts";
+import { WindowsDesktopIllustration } from "@/components/illustrations/guides";
 
 export async function generateMetadata({
   params,
@@ -60,29 +61,34 @@ export default async function WindowsDesktopPage({
       {/* ── Hero ── */}
       <section className="py-16 sm:py-20 border-b border-slate-100 bg-gradient-to-b from-navy-50/40 to-white">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="max-w-3xl">
-            <Link
-              href={`/${lang}/guides/windows-licensing`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-azure-600 hover:text-azure-700 transition-colors mb-4"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-              </svg>
-              {ka ? "ლიცენზირების გზამკვლევი" : "Licensing Guide"}
-            </Link>
-            <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
-              {ka ? "დესკტოპ ლიცენზირება" : "Desktop Licensing"}
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
-              {ka
-                ? "Windows 11 — ედიშენები და ლიცენზირების ტიპები"
-                : "Windows 11 — Editions & License Types"}
-            </h1>
-            <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
-              {ka
-                ? "გაიგეთ Windows 11-ის სამი ძირითადი ედიშენის განსხვავებები და აირჩიეთ სწორი ლიცენზირების ტიპი — OEM, Retail ან Volume Licensing."
-                : "Understand the differences between the three main Windows 11 editions and choose the right license type — OEM, Retail, or Volume Licensing."}
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <Link
+                href={`/${lang}/guides/windows-licensing`}
+                className="inline-flex items-center gap-1 text-xs font-medium text-azure-600 hover:text-azure-700 transition-colors mb-4"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                {ka ? "ლიცენზირების გზამკვლევი" : "Licensing Guide"}
+              </Link>
+              <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
+                {ka ? "დესკტოპ ლიცენზირება" : "Desktop Licensing"}
+              </p>
+              <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
+                {ka
+                  ? "Windows 11 — ედიშენები და ლიცენზირების ტიპები"
+                  : "Windows 11 — Editions & License Types"}
+              </h1>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
+                {ka
+                  ? "გაიგეთ Windows 11-ის სამი ძირითადი ედიშენის განსხვავებები და აირჩიეთ სწორი ლიცენზირების ტიპი — OEM, Retail ან Volume Licensing."
+                  : "Understand the differences between the three main Windows 11 editions and choose the right license type — OEM, Retail, or Volume Licensing."}
+              </p>
+            </div>
+            <div className="hidden lg:block">
+              <WindowsDesktopIllustration className="w-full max-w-sm mx-auto" />
+            </div>
           </div>
         </div>
       </section>

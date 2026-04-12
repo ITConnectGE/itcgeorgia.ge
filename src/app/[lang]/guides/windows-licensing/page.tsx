@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getAllGuides } from "@/components/RelatedPosts";
+import { WindowsLicensingIllustration } from "@/components/illustrations/guides";
 
 export async function generateMetadata({
   params,
@@ -41,20 +42,25 @@ export default async function WindowsLicensingHubPage({
       {/* ── Hero ── */}
       <section className="py-16 sm:py-20 border-b border-slate-100 bg-gradient-to-b from-navy-50/40 to-white">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
-              {ka ? "გზამკვლევი" : "Guide"}
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
-              {ka
-                ? "Windows და Windows Server ლიცენზირების გზამკვლევი"
-                : "Windows & Windows Server Licensing Guide"}
-            </h1>
-            <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
-              {ka
-                ? "ეს გზამკვლევი დაგეხმარებათ გაიგოთ Microsoft Windows-ის ლიცენზირების მოდელები — Desktop-იდან Server-ამდე, ვირტუალიზაციიდან CAL-ებამდე. შეისწავლეთ რა ლიცენზიები სჭირდება თქვენს ორგანიზაციას და როგორ ოპტიმიზირდეთ ხარჯები."
-                : "This guide helps you understand Microsoft Windows licensing models — from Desktop to Server, virtualization to CALs. Learn what licenses your organization needs and how to optimize costs."}
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
+                {ka ? "გზამკვლევი" : "Guide"}
+              </p>
+              <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
+                {ka
+                  ? "Windows და Windows Server ლიცენზირების გზამკვლევი"
+                  : "Windows & Windows Server Licensing Guide"}
+              </h1>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
+                {ka
+                  ? "ეს გზამკვლევი დაგეხმარებათ გაიგოთ Microsoft Windows-ის ლიცენზირების მოდელები — Desktop-იდან Server-ამდე, ვირტუალიზაციიდან CAL-ებამდე. შეისწავლეთ რა ლიცენზიები სჭირდება თქვენს ორგანიზაციას და როგორ ოპტიმიზირდეთ ხარჯები."
+                  : "This guide helps you understand Microsoft Windows licensing models — from Desktop to Server, virtualization to CALs. Learn what licenses your organization needs and how to optimize costs."}
+              </p>
+            </div>
+            <div className="hidden lg:block">
+              <WindowsLicensingIllustration className="w-full max-w-sm mx-auto" />
+            </div>
           </div>
         </div>
       </section>

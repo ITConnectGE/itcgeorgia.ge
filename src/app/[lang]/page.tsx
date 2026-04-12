@@ -5,6 +5,7 @@ import { CloudServer } from "@/components/illustrations/CloudServer";
 import { DataMigration } from "@/components/illustrations/DataMigration";
 import { MicrosoftLogo, AWSLogo, GoogleLogo } from "@/components/vendor-logos";
 import FAQ from "@/components/FAQ";
+import { WindowsServerIllustration, RDSIllustration, CALIllustration } from "@/components/illustrations/guides";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -338,27 +339,35 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 title: ka ? "Windows Server Core ლიცენზირება" : "Windows Server Core Licensing",
                 excerpt: ka ? "Core-based მოდელი, Standard vs Datacenter, გამოთვლის მაგალითები." : "Core-based model, Standard vs Datacenter, calculation examples.",
                 href: `${p}/guides/windows-server`,
+                Illust: WindowsServerIllustration,
               },
               {
                 tag: "RDS",
                 title: ka ? "RDS — Remote Desktop Services ლიცენზირება" : "RDS Licensing Guide",
                 excerpt: ka ? "RDS CAL ტიპები, Farm ლიცენზირება, External Connector, გამოთვლის მაგალითები." : "RDS CAL types, Farm licensing, External Connector, calculation examples.",
                 href: `${p}/guides/rds`,
+                Illust: RDSIllustration,
               },
               {
                 tag: "Licensing",
                 title: ka ? "CAL — Client Access License" : "CAL — Client Access License",
                 excerpt: ka ? "User CAL vs Device CAL, როდის რომელი გამოვიყენოთ." : "User CAL vs Device CAL, when to use which.",
                 href: `${p}/guides/cal`,
+                Illust: CALIllustration,
               },
             ].map((post, i) => (
-              <Link key={i} href={post.href} className="group border border-slate-200 rounded-xl p-6 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all">
+              <Link key={i} href={post.href} className="group border border-slate-200 rounded-xl overflow-hidden hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all">
+                <div className="h-32 border-b border-slate-100">
+                  <post.Illust className="w-full h-full" />
+                </div>
+                <div className="p-5">
                 <span className="text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">{post.tag}</span>
                 <h3 className="mt-3 text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug">{post.title}</h3>
                 <p className="mt-2 text-xs text-slate-400 leading-relaxed">{post.excerpt}</p>
                 <p className="mt-3 text-xs font-medium text-navy-600 group-hover:text-azure-600 transition-colors">
                   {ka ? "წაკითხვა" : "Read"} &rarr;
                 </p>
+                </div>
               </Link>
             ))}
           </div>

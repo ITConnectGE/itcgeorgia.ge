@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { RelatedPosts, getAllGuides } from "@/components/RelatedPosts";
+import { VirtualizationIllustration } from "@/components/illustrations/guides";
 
 export async function generateMetadata({
   params,
@@ -60,29 +61,34 @@ export default async function VirtualizationPage({
       {/* ── Hero ── */}
       <section className="py-16 sm:py-20 border-b border-slate-100 bg-gradient-to-b from-navy-50/40 to-white">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="max-w-3xl">
-            <Link
-              href={`/${lang}/guides/windows-licensing`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-azure-600 hover:text-azure-700 transition-colors mb-4"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-              </svg>
-              {ka ? "ლიცენზირების გზამკვლევი" : "Licensing Guide"}
-            </Link>
-            <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
-              {ka ? "ვირტუალიზაცია" : "Virtualization"}
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
-              {ka
-                ? "Windows Server — ვირტუალიზაციის უფლებები"
-                : "Windows Server — Virtualization Rights"}
-            </h1>
-            <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
-              {ka
-                ? "Windows Server ლიცენზია განსაზღვრავს რამდენი ვირტუალური მანქანის (VM) გაშვება შეგიძლიათ. Standard ედიშენი იძლევა 2 VM-ს, Datacenter — შეუზღუდავს. გაიგეთ როგორ მუშაობს დასტაფვა (stacking) და როდის ჯობია Datacenter-ზე გადასვლა."
-                : "Your Windows Server license determines how many virtual machines (VMs) you can run. Standard edition allows 2 VMs, Datacenter allows unlimited. Learn how stacking works and when to switch to Datacenter."}
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <Link
+                href={`/${lang}/guides/windows-licensing`}
+                className="inline-flex items-center gap-1 text-xs font-medium text-azure-600 hover:text-azure-700 transition-colors mb-4"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                {ka ? "ლიცენზირების გზამკვლევი" : "Licensing Guide"}
+              </Link>
+              <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
+                {ka ? "ვირტუალიზაცია" : "Virtualization"}
+              </p>
+              <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
+                {ka
+                  ? "Windows Server — ვირტუალიზაციის უფლებები"
+                  : "Windows Server — Virtualization Rights"}
+              </h1>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-2xl">
+                {ka
+                  ? "Windows Server ლიცენზია განსაზღვრავს რამდენი ვირტუალური მანქანის (VM) გაშვება შეგიძლიათ. Standard ედიშენი იძლევა 2 VM-ს, Datacenter — შეუზღუდავს. გაიგეთ როგორ მუშაობს დასტაფვა (stacking) და როდის ჯობია Datacenter-ზე გადასვლა."
+                  : "Your Windows Server license determines how many virtual machines (VMs) you can run. Standard edition allows 2 VMs, Datacenter allows unlimited. Learn how stacking works and when to switch to Datacenter."}
+              </p>
+            </div>
+            <div className="hidden lg:block">
+              <VirtualizationIllustration className="w-full max-w-sm mx-auto" />
+            </div>
           </div>
         </div>
       </section>
