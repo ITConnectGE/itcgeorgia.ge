@@ -11,8 +11,8 @@ const images: Record<string, { src: string; alt: string }> = {
     alt: "Windows 11 ლოგო",
   },
   "windows-server": {
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop&q=80",
-    alt: "სერვერ რუმი",
+    src: "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/windows-server-702702?scl=1",
+    alt: "Windows Server Core ლიცენზირება",
   },
   "virtualization": {
     src: "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero-Windows-Server-2025?scl=1",
