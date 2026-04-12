@@ -9,6 +9,7 @@ import { FlagIcon, localeLabels } from "@/components/flags";
 
 const navKeys = ["home", "about", "services", "benefits", "contact"] as const;
 const navPaths = ["/", "/about", "/services", "/benefits", "/contact"];
+const guidesLabel: Record<string, string> = { ka: "ბლოგი", en: "Blog", default: "Blog" };
 
 export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,6 +56,12 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
                 {dict.nav[key]}
               </Link>
             ))}
+            <Link
+              href={`${prefix}/guides`}
+              className={`px-2.5 py-2 text-xs transition-colors ${pathname.startsWith(`${prefix}/guides`) ? "text-navy-900 font-semibold" : "text-slate-500 hover:text-slate-900"}`}
+            >
+              {guidesLabel[lang] || guidesLabel.default}
+            </Link>
           </nav>
 
           <div className="hidden lg:flex items-center gap-3 shrink-0">
@@ -127,6 +134,13 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
                   {dict.nav[key]}
                 </Link>
               ))}
+              <Link
+                href={`${prefix}/guides`}
+                onClick={() => setMenuOpen(false)}
+                className="px-3 py-2.5 text-sm text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50"
+              >
+                {guidesLabel[lang] || guidesLabel.default}
+              </Link>
             </nav>
             <div className="mt-3 pt-3 border-t border-slate-100 px-3 space-y-3">
               {/* Mobile language switcher with flags */}

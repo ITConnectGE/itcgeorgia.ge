@@ -324,41 +324,48 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* Blog placeholder */}
+      {/* Blog — real guides */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-5xl px-5">
           <SectionHeading
             label={ka ? "ბლოგი" : "Blog"}
-            title={ka ? "სიახლეები და რჩევები" : "News & Tips"}
+            title={ka ? "გზამკვლევები და სტატიები" : "Guides & Articles"}
           />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
-                tag: "Microsoft 365",
-                title: ka ? "Microsoft 365 Business vs Enterprise: რომელი აირჩიოთ?" : "Microsoft 365 Business vs Enterprise: Which to Choose?",
-                excerpt: ka ? "გაიგეთ რა განსხვავებაა Business და Enterprise გეგმებს შორის და როგორ შეარჩიოთ თქვენი ორგანიზაციისთვის ოპტიმალური." : "Learn the differences between Business and Enterprise plans and how to choose the right one.",
-                date: "2026-04-10",
+                tag: "Windows Server",
+                title: ka ? "Windows Server Core ლიცენზირება" : "Windows Server Core Licensing",
+                excerpt: ka ? "Core-based მოდელი, Standard vs Datacenter, გამოთვლის მაგალითები." : "Core-based model, Standard vs Datacenter, calculation examples.",
+                href: `${p}/guides/windows-server`,
               },
               {
-                tag: "AWS",
-                title: ka ? "AWS ხარჯების ოპტიმიზაცია: 5 პრაქტიკული რჩევა" : "AWS Cost Optimization: 5 Practical Tips",
-                excerpt: ka ? "შეამცირეთ ღრუბლოვანი ხარჯები Reserved Instances-ით, Savings Plans-ით და რესურსების სწორი მართვით." : "Reduce cloud costs with Reserved Instances, Savings Plans and proper resource management.",
-                date: "2026-04-05",
+                tag: "RDS",
+                title: ka ? "RDS — Remote Desktop Services ლიცენზირება" : "RDS Licensing Guide",
+                excerpt: ka ? "RDS CAL ტიპები, Farm ლიცენზირება, External Connector, გამოთვლის მაგალითები." : "RDS CAL types, Farm licensing, External Connector, calculation examples.",
+                href: `${p}/guides/rds`,
               },
               {
-                tag: "Google Workspace",
-                title: ka ? "ელ-ფოსტის მიგრაცია Google Workspace-ზე: ნაბიჯ-ნაბიჯ" : "Email Migration to Google Workspace: Step by Step",
-                excerpt: ka ? "დეტალური გზამკვლევი თქვენი ორგანიზაციის ელ-ფოსტის Google Workspace-ზე გადატანისთვის." : "Detailed guide for migrating your organization's email to Google Workspace.",
-                date: "2026-03-28",
+                tag: "Licensing",
+                title: ka ? "CAL — Client Access License" : "CAL — Client Access License",
+                excerpt: ka ? "User CAL vs Device CAL, როდის რომელი გამოვიყენოთ." : "User CAL vs Device CAL, when to use which.",
+                href: `${p}/guides/cal`,
               },
             ].map((post, i) => (
-              <div key={i} className="border border-slate-200 rounded-xl p-6 hover:border-slate-300 transition-colors">
+              <Link key={i} href={post.href} className="group border border-slate-200 rounded-xl p-6 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all">
                 <span className="text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">{post.tag}</span>
-                <h3 className="mt-3 text-sm font-semibold text-slate-900 leading-snug">{post.title}</h3>
+                <h3 className="mt-3 text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug">{post.title}</h3>
                 <p className="mt-2 text-xs text-slate-400 leading-relaxed">{post.excerpt}</p>
-                <p className="mt-3 text-[10px] text-slate-300">{post.date}</p>
-              </div>
+                <p className="mt-3 text-xs font-medium text-navy-600 group-hover:text-azure-600 transition-colors">
+                  {ka ? "წაკითხვა" : "Read"} &rarr;
+                </p>
+              </Link>
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href={`${p}/guides`} className="text-sm font-medium text-navy-600 hover:text-azure-600 transition-colors">
+              {ka ? "ყველა სტატია" : "All Articles"} &rarr;
+            </Link>
           </div>
         </div>
       </section>
