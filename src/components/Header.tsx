@@ -3,22 +3,11 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
+import { locales } from "@/lib/i18n";
+import { FlagIcon, localeLabels } from "@/components/flags";
 
 const navKeys = ["home", "about", "services", "benefits", "contact"] as const;
 const navPaths = ["/", "/about", "/services", "/benefits", "/contact"];
-
-const localeFlags: Record<Locale, { flag: string; label: string }> = {
-  ka: { flag: "🇬🇪", label: "ქართული" },
-  en: { flag: "🇬🇧", label: "English" },
-  hi: { flag: "🇮🇳", label: "हिन्दी" },
-  fa: { flag: "🇮🇷", label: "فارسی" },
-  ar: { flag: "🇸🇦", label: "العربية" },
-  ru: { flag: "🇷🇺", label: "Русский" },
-  uk: { flag: "🇺🇦", label: "Українська" },
-  tr: { flag: "🇹🇷", label: "Türkçe" },
-  hy: { flag: "🇦🇲", label: "Հayerեn" },
-  az: { flag: "🇦🇿", label: "Azərbaycan" },
-};
 
 export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -65,18 +54,18 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
             <div ref={langRef} className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors"
+                className="flex items-center gap-2 px-2.5 py-1.5 text-sm text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors"
               >
-                <span className="text-base leading-none">{localeFlags[lang].flag}</span>
-                <span className="text-xs">{localeFlags[lang].label}</span>
-                <svg className={`w-3.5 h-3.5 text-slate-400 transition-transform ${langOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <FlagIcon locale={lang} />
+                <span className="text-xs">{localeLabels[lang]}</span>
+                <svg className={`w-3 h-3 text-slate-400 transition-transform ${langOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
               </button>
 
               {langOpen && (
-                <div className="absolute right-0 top-full mt-1 w-40 bg-white border border-slate-200 rounded-xl shadow-lg shadow-slate-200/50 py-1 z-50">
-                  {(["ka", "en", "hi", "fa", "ar", "ru", "uk", "tr", "hy", "az"] as Locale[]).map((l) => (
+                <div className="absolute right-0 top-full mt-1 w-44 bg-white border border-slate-200 rounded-xl shadow-lg shadow-slate-200/50 py-1 z-50">
+                  {locales.map((l) => (
                     <Link
                       key={l}
                       href={`/${l}`}
@@ -87,8 +76,8 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
                           : "text-slate-600 hover:bg-slate-50"
                       }`}
                     >
-                      <span className="text-base leading-none">{localeFlags[l].flag}</span>
-                      <span>{localeFlags[l].label}</span>
+                      <FlagIcon locale={l} />
+                      <span>{localeLabels[l]}</span>
                     </Link>
                   ))}
                 </div>
@@ -132,21 +121,21 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
               ))}
             </nav>
             <div className="mt-3 pt-3 border-t border-slate-100 px-3 space-y-3">
-              {/* Mobile language switcher */}
-              <div className="flex gap-1">
-                {(["ka", "en", "hi", "fa", "ar", "ru", "uk", "tr", "hy", "az"] as Locale[]).map((l) => (
+              {/* Mobile language switcher with flags */}
+              <div className="flex flex-wrap gap-1.5">
+                {locales.map((l) => (
                   <Link
                     key={l}
                     href={`/${l}`}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
                       l === lang
                         ? "bg-navy-50 text-navy-700 font-medium"
                         : "text-slate-500 hover:bg-slate-50"
                     }`}
                   >
-                    <span className="text-base leading-none">{localeFlags[l].flag}</span>
-                    <span className="text-xs">{localeFlags[l].label}</span>
+                    <FlagIcon locale={l} className="w-4 h-3" />
+                    <span>{localeLabels[l]}</span>
                   </Link>
                 ))}
               </div>
