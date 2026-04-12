@@ -4,31 +4,31 @@
 const images: Record<string, { src: string; alt: string }> = {
   "windows-licensing": {
     src: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&h=400&fit=crop&q=80",
-    alt: "Windows licensing documentation",
+    alt: "Windows ლიცენზირების დოკუმენტაცია",
   },
   "windows-desktop": {
     src: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=400&fit=crop&q=80",
-    alt: "Windows desktop computer setup",
+    alt: "Windows დესკტოპ კომპიუტერი",
   },
   "windows-server": {
     src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop&q=80",
-    alt: "Server room with rack servers",
+    alt: "სერვერ რუმი",
   },
   "virtualization": {
     src: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=400&fit=crop&q=80",
-    alt: "Cloud virtualization infrastructure",
+    alt: "ვირტუალიზაციის ინფრასტრუქტურა",
   },
   "cal": {
-    src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=400&fit=crop&q=80",
-    alt: "Business team accessing server resources",
+    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=400&fit=crop&q=80",
+    alt: "მომხმარებლების წვდომის მართვა",
   },
   "rds": {
-    src: "https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&h=400&fit=crop&q=80",
-    alt: "Remote desktop connection setup",
+    src: "https://images.unsplash.com/photo-1616587894289-86480e533129?w=800&h=400&fit=crop&q=80",
+    alt: "დისტანციური სამუშაო მაგიდა",
   },
   "sql-server": {
-    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop&q=80",
-    alt: "Database analytics dashboard",
+    src: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=400&fit=crop&q=80",
+    alt: "SQL მონაცემთა ბაზის კოდი",
   },
 };
 
