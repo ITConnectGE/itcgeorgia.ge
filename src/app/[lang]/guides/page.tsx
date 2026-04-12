@@ -3,14 +3,13 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getAllGuides } from "@/components/RelatedPosts";
-import { GuideImage } from "@/components/illustrations/guides";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   return {
     title: lang === "ka" ? "გზამკვლევები და სტატიები" : "Guides & Articles",
     description: lang === "ka"
-      ? "ლიცენზირების, ღრუბლოვანი სერვისების და IT ინფრასტრუქტურის გზამკვლევები ქართულ ენაზე."
+      ? "ლიცენზირების, ღრუბლოვანი სერვისების და IT ინფრასტრუქტურის გზამკვლევები."
       : "Licensing, cloud services and IT infrastructure guides.",
   };
 }
@@ -22,90 +21,64 @@ export default async function GuidesPage({ params }: { params: Promise<{ lang: s
   const p = `/${lang}`;
   const allGuides = getAllGuides(lang);
 
-  // Group by tag
-  const tags = [...new Set(allGuides.map((g) => g.tag))];
-
   return (
     <>
       {/* Hero */}
-      <section className="py-16 sm:py-20 border-b border-slate-100 bg-gradient-to-b from-navy-50/40 to-white">
+      <section className="py-16 sm:py-20 border-b border-slate-100">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
-              {ka ? "ბლოგი" : "Blog"}
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
-              {ka ? "გზამკვლევები და სტატიები" : "Guides & Articles"}
-            </h1>
-            <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-              {ka
-                ? "ლიცენზირების, ღრუბლოვანი სერვისების და IT ინფრასტრუქტურის პრაქტიკული გზამკვლევები. დაგეხმარებათ სწორი გადაწყვეტილების მიღებაში."
-                : "Practical guides on licensing, cloud services and IT infrastructure. Helping you make the right decisions."}
-            </p>
-          </div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
+            {ka ? "ბლოგი" : "Blog"}
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
+            {ka ? "გზამკვლევები და სტატიები" : "Guides & Articles"}
+          </h1>
+          <p className="mt-3 text-sm text-slate-500">
+            {ka
+              ? "ლიცენზირების და IT ინფრასტრუქტურის პრაქტიკული გზამკვლევები."
+              : "Practical licensing and IT infrastructure guides."}
+          </p>
         </div>
       </section>
 
-      {/* Tag pills */}
-      <section className="py-6 border-b border-slate-100 bg-white sticky top-16 z-30">
+      {/* Table */}
+      <section className="py-10 sm:py-16">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1.5 text-xs font-medium bg-navy-900 text-white rounded-full">
-              {ka ? "ყველა" : "All"} ({allGuides.length})
-            </span>
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1.5 text-xs font-medium text-slate-500 bg-slate-100 rounded-full"
-              >
-                {tag} ({allGuides.filter((g) => g.tag === tag).length})
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Articles grid */}
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-5xl px-5">
-          {tags.map((tag) => {
-            const guides = allGuides.filter((g) => g.tag === tag);
-            return (
-              <div key={tag} className="mb-12 last:mb-0">
-                <h2 className="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-azure-500 rounded-full" />
-                  {tag}
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {guides.map((guide) => {
-                    return (
-                      <Link
-                        key={guide.slug}
-                        href={guide.href}
-                        className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
-                      >
-                        <GuideImage slug={guide.slug} className="h-40" />
-                        <div className="p-5">
-                          <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-2">
-                            {guide.tag}
-                          </span>
-                          <h3 className="text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug mb-1.5">
-                            {guide.title}
-                          </h3>
-                          <p className="text-xs text-slate-400 leading-relaxed mb-2">
-                            {guide.description}
-                          </p>
-                          <span className="text-xs font-medium text-navy-600 group-hover:text-azure-600 transition-colors">
-                            {ka ? "წაკითხვა" : "Read"} &rarr;
-                          </span>
-                        </div>
+          <div className="border border-slate-200 rounded-xl overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-200">
+                  <th className="text-left py-3 px-4 font-medium text-slate-400 w-32">
+                    {ka ? "კატეგორია" : "Category"}
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-slate-400">
+                    {ka ? "სათაური" : "Title"}
+                  </th>
+                  <th className="text-right py-3 px-4 font-medium text-slate-400 w-28 hidden sm:table-cell">
+                    {ka ? "თარიღი" : "Date"}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {allGuides.map((guide) => (
+                  <tr key={guide.slug} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors">
+                    <td className="py-3 px-4">
+                      <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">
+                        {guide.tag}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4">
+                      <Link href={guide.href} className="text-sm font-medium text-slate-900 hover:text-azure-600 transition-colors">
+                        {guide.title}
                       </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
+                    </td>
+                    <td className="py-3 px-4 text-right text-xs text-slate-400 hidden sm:table-cell">
+                      2026
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
