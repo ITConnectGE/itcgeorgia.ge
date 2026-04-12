@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { locales, getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -43,6 +45,8 @@ export default async function LangLayout({
       <Header dict={dict} lang={lang as Locale} />
       <main className="flex-1 w-full">{children}</main>
       <Footer dict={dict} lang={lang as Locale} />
+      <WhatsAppButton />
+      <BackToTop />
     </div>
   );
 }

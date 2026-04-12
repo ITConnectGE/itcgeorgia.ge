@@ -71,6 +71,9 @@ export function Footer({ dict, lang }: { dict: Dictionary; lang: Locale }) {
             <Link href={`${p}/terms`} className="hover:text-slate-600 transition-colors">
               {lang === "ka" ? "წესები და პირობები" : "Terms & Conditions"}
             </Link>
+            <Link href={`${p}/privacy`} className="hover:text-slate-600 transition-colors">
+              {lang === "ka" ? "კონფიდენციალურობა" : "Privacy Policy"}
+            </Link>
           </div>
           <div className="flex items-center gap-4 text-xs text-slate-400">
             <span>Microsoft Partner</span>

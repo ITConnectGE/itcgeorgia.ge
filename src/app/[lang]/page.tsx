@@ -4,11 +4,13 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import { CloudServer } from "@/components/illustrations/CloudServer";
 import { DataMigration } from "@/components/illustrations/DataMigration";
 import { MicrosoftLogo, AWSLogo, GoogleLogo } from "@/components/vendor-logos";
+import FAQ from "@/components/FAQ";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dict = getDictionary(lang as Locale);
   const p = `/${lang}`;
+  const ka = lang === "ka";
 
   return (
     <>
@@ -33,15 +35,28 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <CloudServer className="w-full max-w-sm" />
             </div>
           </div>
-          <div className="mt-12 flex flex-wrap gap-6 text-xs text-slate-400">
-            {dict.hero.trust.map((text) => (
-              <div key={text} className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-azure-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span>{text}</span>
+          {/* Trust + Stats */}
+          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <div className="flex flex-wrap gap-6 text-xs text-slate-400">
+              {dict.hero.trust.map((text) => (
+                <div key={text} className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-azure-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex gap-6 text-xs">
+              <div className="text-center">
+                <span className="text-lg font-bold text-navy-900">100+</span>
+                <p className="text-slate-400">{ka ? "კომპანია" : "Companies"}</p>
               </div>
-            ))}
+              <div className="text-center">
+                <span className="text-lg font-bold text-navy-900">3</span>
+                <p className="text-slate-400">{ka ? "გლობალური პარტნიორი" : "Global Partners"}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -69,10 +84,21 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 <AWSLogo key="aws" className="h-5" />,
                 <GoogleLogo key="g" className="h-5" />,
               ];
+              const borderColors = ["border-l-[#0078d4]", "border-l-[#ff9900]", "border-l-[#34a853]"];
               return (
-                <div key={i} className="group border border-slate-200 rounded-xl p-6 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all">
+                <div key={i} className={`group border border-slate-200 ${borderColors[i]} border-l-[3px] rounded-xl p-6 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all relative`}>
+                  {i === 0 && (
+                    <span className="absolute -top-2.5 right-4 bg-azure-600 text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-full">
+                      {ka ? "ყველაზე პოპულარული" : "Most Popular"}
+                    </span>
+                  )}
                   <div className="mb-4">{logos[i]}</div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-3">{service.title}</h3>
+                  <h3 className="text-base font-semibold text-slate-900 mb-2">{service.title}</h3>
+                  <p className="text-xs text-slate-400 mb-3">
+                    {i === 0 ? (ka ? "ოფისის, ღრუბლის და სერვერების სრული ეკოსისტემა ნებისმიერი ზომის ბიზნესისთვის." : "Complete office, cloud and server ecosystem for any size business.")
+                     : i === 1 ? (ka ? "მსოფლიოს ყველაზე ფართო ღრუბლოვანი პლატფორმა მასშტაბირებადი ინფრასტრუქტურისთვის." : "World's broadest cloud platform for scalable infrastructure.")
+                     : (ka ? "თანამშრომლობის ინსტრუმენტები და ღრუბლოვანი ტექნოლოგიები პროდუქტიულობისთვის." : "Collaboration tools and cloud technologies for productivity.")}
+                  </p>
                   <ul className="space-y-2 mb-5">
                     {service.bullets.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm text-slate-500">
@@ -93,8 +119,62 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className="py-16 sm:py-24 bg-slate-50">
+        <div className="mx-auto max-w-5xl px-5">
+          <SectionHeading
+            label={ka ? "ფასწარმოქმნა" : "Pricing"}
+            title={ka ? "საორიენტაციო ფასები" : "Indicative Pricing"}
+            description={ka ? "საბოლოო ფასი დამოკიდებულია მომხმარებლების რაოდენობასა და არჩეულ გეგმაზე. გამოითხოვეთ უფასო შეთავაზება." : "Final pricing depends on user count and selected plan. Request a free quote."}
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                logo: <MicrosoftLogo key="ms" className="h-5" />,
+                name: "Microsoft 365",
+                from: ka ? "დაწყებული" : "Starting from",
+                price: "~$6",
+                per: ka ? "/ მომხმარებელი / თვე" : "/ user / month",
+                note: ka ? "Business Basic გეგმა. Enterprise და Premium გეგმებიც ხელმისაწვდომია." : "Business Basic plan. Enterprise and Premium plans also available.",
+              },
+              {
+                logo: <AWSLogo key="aws" className="h-4" />,
+                name: "Amazon AWS",
+                from: ka ? "დაწყებული" : "Starting from",
+                price: ka ? "მოხმარებით" : "Pay-as-you-go",
+                per: "",
+                note: ka ? "ხარჯები დამოკიდებულია გამოყენებულ სერვისებზე. Savings Plans-ის ფასდაკლებები ხელმისაწვდომია." : "Costs depend on services used. Savings Plans discounts available.",
+              },
+              {
+                logo: <GoogleLogo key="g" className="h-4" />,
+                name: "Google Workspace",
+                from: ka ? "დაწყებული" : "Starting from",
+                price: "~$7",
+                per: ka ? "/ მომხმარებელი / თვე" : "/ user / month",
+                note: ka ? "Business Starter გეგმა. Business Plus და Enterprise გეგმებიც ხელმისაწვდომია." : "Business Starter plan. Business Plus and Enterprise plans also available.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+                <div className="mb-3">{item.logo}</div>
+                <p className="text-xs text-slate-400 mb-1">{item.from}</p>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="text-2xl font-bold text-slate-900">{item.price}</span>
+                  {item.per && <span className="text-xs text-slate-400">{item.per}</span>}
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">{item.note}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href={`${p}/contact`} className="inline-block px-5 py-2.5 text-sm font-medium text-white bg-navy-900 rounded-lg hover:bg-navy-800 shadow-sm transition-all">
+              {ka ? "მიიღეთ პერსონალური შეთავაზება" : "Get a Personalized Quote"}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Migration */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-navy-50/40">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-white to-navy-50/40">
         <div className="mx-auto max-w-5xl px-5">
           <SectionHeading label={dict.migration.label} title={dict.migration.title} description={dict.migration.description} />
           <div className="mt-8 flex justify-center">
@@ -131,8 +211,68 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
+      {/* Testimonials / Social Proof */}
+      <section className="py-16 sm:py-24 bg-slate-50">
+        <div className="mx-auto max-w-5xl px-5">
+          <SectionHeading
+            label={ka ? "კლიენტები" : "Clients"}
+            title={ka ? "ჩვენი კლიენტების გამოხმაურება" : "What Our Clients Say"}
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                quote: ka ? "Microsoft 365-ზე მიგრაცია სრულიად უპრობლემოდ ჩატარდა. ITC Georgia-ს გუნდმა ყველაფერი თავის თავზე აიღო." : "Migration to Microsoft 365 was completely seamless. ITC Georgia's team handled everything.",
+                name: ka ? "გიორგი მ." : "Giorgi M.",
+                company: ka ? "სამშენებლო კომპანია" : "Construction Company",
+                service: "Microsoft 365 Migration",
+              },
+              {
+                quote: ka ? "ლარში ანგარიშსწორება და ქართული ინვოისი ჩვენი ბუღალტერიისთვის ძალიან მოხერხებულია." : "GEL billing and Georgian invoices are very convenient for our accounting.",
+                name: ka ? "ნინო კ." : "Nino K.",
+                company: ka ? "იურიდიული ფირმა" : "Law Firm",
+                service: "Google Workspace",
+              },
+              {
+                quote: ka ? "AWS ხარჯების ოპტიმიზაციაში დაგვეხმარნენ და თვეში 30%-ით ნაკლებს ვიხდით." : "They helped us optimize AWS costs and we pay 30% less per month.",
+                name: ka ? "დავით შ." : "David Sh.",
+                company: ka ? "ტექ სტარტაპი" : "Tech Startup",
+                service: "AWS Optimization",
+              },
+            ].map((t, i) => (
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+                <svg className="w-6 h-6 text-navy-100 mb-3" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
+                </svg>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">{t.quote}</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-slate-900">{t.name}</p>
+                    <p className="text-xs text-slate-400">{t.company}</p>
+                  </div>
+                  <span className="text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">{t.service}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Client logos placeholder */}
+          <div className="mt-12">
+            <p className="text-center text-xs text-slate-400 mb-6">
+              {ka ? "ჩვენ ენდობიან" : "Trusted by"}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="w-24 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
+                  <span className="text-[10px] text-slate-300 font-medium">LOGO</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Process */}
-      <section className="py-16 sm:py-24 bg-slate-50/50">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-5xl px-5">
           <SectionHeading label={dict.process.label} title={dict.process.title} description={dict.process.description} />
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -147,12 +287,86 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 sm:py-24 bg-slate-50">
+        <div className="mx-auto max-w-5xl px-5">
+          <SectionHeading
+            label={ka ? "კითხვები" : "FAQ"}
+            title={ka ? "ხშირად დასმული კითხვები" : "Frequently Asked Questions"}
+          />
+          <div className="mt-10 max-w-2xl mx-auto">
+            <FAQ
+              items={ka ? [
+                { q: "რამდენი ღირს Microsoft 365 ლიცენზია?", a: "ფასი იწყება დაახლოებით $6-დან მომხმარებელზე თვეში (Business Basic). საბოლოო ფასი დამოკიდებულია გეგმასა და მომხმარებლების რაოდენობაზე. გამოითხოვეთ უფასო შეთავაზება." },
+                { q: "მიგრაცია რამდენ ხანს იღებს?", a: "სტანდარტული მიგრაცია 1-5 სამუშაო დღეში სრულდება, მომხმარებლების რაოდენობისა და მონაცემების მოცულობის მიხედვით. სერვისი არ წყდება პროცესის განმავლობაში." },
+                { q: "შევძლებ თუ არა ლარში გადახდას?", a: "დიახ! ყველა ანგარიშსწორება ხდება ქართულ ლარში. იღებთ ანგარიშფაქტურას დღგ-ს ჩათვლით, სტანდარტული საბანკო გადარიცხვით." },
+                { q: "ვენდორის სერვის ცენტრთან კომუნიკაცია ჩემი საქმე იქნება?", a: "არა. ჩვენ უზრუნველვყოფთ Level 1 მხარდაჭერას. საჭიროებისას, ვენდორთან კომუნიკაციას ჩვენ ვაწარმოებთ თქვენ მაგივრად. ამასთან, პირდაპირ ვენდორის მხარდაჭერაზეც გაქვთ წვდომა." },
+                { q: "იღებთ თუ არა საწარმო კლიენტებს?", a: "დიახ! გვაქვს სპეციალური კორპორატიული შეთავაზებები 250+ მომხმარებლის მქონე ორგანიზაციებისთვის, მათ შორის დედიკატებული ანგარიშის მენეჯერი და SLA." },
+                { q: "არის თუ არა ხელშეკრულება სავალდებულო?", a: "ლიცენზიების შეძენა ხელშეკრულების საფუძველზე ხდება, რაც ორივე მხარეს იცავს. ხელშეკრულების პირობები მოქნილია და თქვენს საჭიროებებზეა მორგებული." },
+              ] : [
+                { q: "How much does a Microsoft 365 license cost?", a: "Pricing starts from ~$6/user/month (Business Basic). Final price depends on plan and user count. Request a free quote." },
+                { q: "How long does migration take?", a: "Standard migration completes in 1-5 business days, depending on users and data volume. No service interruption during the process." },
+                { q: "Can I pay in GEL?", a: "Yes! All billing is in Georgian Lari. You receive VAT-inclusive invoices via standard bank transfer." },
+                { q: "Do I have to deal with vendor support myself?", a: "No. We provide L1 support. When needed, we handle vendor communication on your behalf. Direct vendor support is also available." },
+                { q: "Do you serve enterprise clients?", a: "Yes! We offer special corporate packages for organizations with 250+ users, including a dedicated account manager and SLA." },
+                { q: "Is a contract required?", a: "License purchases are contract-based to protect both parties. Contract terms are flexible and tailored to your needs." },
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Blog placeholder */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="mx-auto max-w-5xl px-5">
+          <SectionHeading
+            label={ka ? "ბლოგი" : "Blog"}
+            title={ka ? "სიახლეები და რჩევები" : "News & Tips"}
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                tag: "Microsoft 365",
+                title: ka ? "Microsoft 365 Business vs Enterprise: რომელი აირჩიოთ?" : "Microsoft 365 Business vs Enterprise: Which to Choose?",
+                excerpt: ka ? "გაიგეთ რა განსხვავებაა Business და Enterprise გეგმებს შორის და როგორ შეარჩიოთ თქვენი ორგანიზაციისთვის ოპტიმალური." : "Learn the differences between Business and Enterprise plans and how to choose the right one.",
+                date: "2026-04-10",
+              },
+              {
+                tag: "AWS",
+                title: ka ? "AWS ხარჯების ოპტიმიზაცია: 5 პრაქტიკული რჩევა" : "AWS Cost Optimization: 5 Practical Tips",
+                excerpt: ka ? "შეამცირეთ ღრუბლოვანი ხარჯები Reserved Instances-ით, Savings Plans-ით და რესურსების სწორი მართვით." : "Reduce cloud costs with Reserved Instances, Savings Plans and proper resource management.",
+                date: "2026-04-05",
+              },
+              {
+                tag: "Google Workspace",
+                title: ka ? "ელ-ფოსტის მიგრაცია Google Workspace-ზე: ნაბიჯ-ნაბიჯ" : "Email Migration to Google Workspace: Step by Step",
+                excerpt: ka ? "დეტალური გზამკვლევი თქვენი ორგანიზაციის ელ-ფოსტის Google Workspace-ზე გადატანისთვის." : "Detailed guide for migrating your organization's email to Google Workspace.",
+                date: "2026-03-28",
+              },
+            ].map((post, i) => (
+              <div key={i} className="border border-slate-200 rounded-xl p-6 hover:border-slate-300 transition-colors">
+                <span className="text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">{post.tag}</span>
+                <h3 className="mt-3 text-sm font-semibold text-slate-900 leading-snug">{post.title}</h3>
+                <p className="mt-2 text-xs text-slate-400 leading-relaxed">{post.excerpt}</p>
+                <p className="mt-3 text-[10px] text-slate-300">{post.date}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 sm:py-24 bg-gradient-to-br from-navy-900 via-navy-900 to-navy-800">
         <div className="mx-auto max-w-5xl px-5 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-snug">{dict.cta.title}</h2>
           <p className="mt-3 text-sm text-navy-300 max-w-md mx-auto">{dict.cta.description}</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 bg-navy-800 rounded-full text-xs text-navy-300 mb-6">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {ka ? "პასუხობთ 24 საათში სამუშაო დღეს" : "Response within 24 business hours"}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <Link href={`${p}/contact`} className="inline-block px-5 py-2.5 text-sm font-medium text-navy-900 bg-white rounded-lg hover:bg-navy-50 shadow-sm transition-all">
               {dict.cta.button}
             </Link>

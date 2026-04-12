@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
@@ -13,7 +14,14 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   const prefix = `/${lang}`;
+
+  function isActive(i: number) {
+    const path = i === 0 ? prefix : `${prefix}${navPaths[i]}`;
+    if (i === 0) return pathname === prefix || pathname === `${prefix}/`;
+    return pathname.startsWith(path);
+  }
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -42,7 +50,7 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
               <Link
                 key={key}
                 href={i === 0 ? prefix : `${prefix}${navPaths[i]}`}
-                className="px-2.5 py-2 text-xs text-slate-500 hover:text-slate-900 transition-colors"
+                className={`px-2.5 py-2 text-xs transition-colors ${isActive(i) ? "text-navy-900 font-semibold" : "text-slate-500 hover:text-slate-900"}`}
               >
                 {dict.nav[key]}
               </Link>
