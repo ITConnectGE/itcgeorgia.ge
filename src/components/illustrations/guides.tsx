@@ -7,8 +7,8 @@ const images: Record<string, { src: string; alt: string }> = {
     alt: "Windows ლიცენზირების დოკუმენტაცია",
   },
   "windows-desktop": {
-    src: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=400&fit=crop&q=80",
-    alt: "Windows დესკტოპ კომპიუტერი",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Windows_11_logo.svg/800px-Windows_11_logo.svg.png",
+    alt: "Windows 11 ლოგო",
   },
   "windows-server": {
     src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop&q=80",
