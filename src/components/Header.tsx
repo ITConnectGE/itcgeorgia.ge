@@ -15,6 +15,9 @@ const localeFlags: Record<Locale, { flag: string; label: string }> = {
   ar: { flag: "🇸🇦", label: "العربية" },
   ru: { flag: "🇷🇺", label: "Русский" },
   uk: { flag: "🇺🇦", label: "Українська" },
+  tr: { flag: "🇹🇷", label: "Türkçe" },
+  hy: { flag: "🇦🇲", label: "Հayerեn" },
+  az: { flag: "🇦🇿", label: "Azərbaycan" },
 };
 
 export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
@@ -73,7 +76,7 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
 
               {langOpen && (
                 <div className="absolute right-0 top-full mt-1 w-40 bg-white border border-slate-200 rounded-xl shadow-lg shadow-slate-200/50 py-1 z-50">
-                  {(["ka", "en", "hi", "fa", "ar", "ru", "uk"] as Locale[]).map((l) => (
+                  {(["ka", "en", "hi", "fa", "ar", "ru", "uk", "tr", "hy", "az"] as Locale[]).map((l) => (
                     <Link
                       key={l}
                       href={`/${l}`}
@@ -131,7 +134,7 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
             <div className="mt-3 pt-3 border-t border-slate-100 px-3 space-y-3">
               {/* Mobile language switcher */}
               <div className="flex gap-1">
-                {(["ka", "en", "hi", "fa", "ar", "ru", "uk"] as Locale[]).map((l) => (
+                {(["ka", "en", "hi", "fa", "ar", "ru", "uk", "tr", "hy", "az"] as Locale[]).map((l) => (
                   <Link
                     key={l}
                     href={`/${l}`}

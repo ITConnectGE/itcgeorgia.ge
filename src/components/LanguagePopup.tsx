@@ -12,6 +12,9 @@ const languages: { code: Locale; flag: string; label: string; nativeCta: string 
   { code: "hi", flag: "🇮🇳", label: "हिन्दी", nativeCta: "हिन्दी में जारी रखें" },
   { code: "fa", flag: "🇮🇷", label: "فارسی", nativeCta: "ادامه به فارسی" },
   { code: "ar", flag: "🇸🇦", label: "العربية", nativeCta: "المتابعة بالعربية" },
+  { code: "tr", flag: "🇹🇷", label: "Türkçe", nativeCta: "Türkçe ile devam et" },
+  { code: "hy", flag: "🇦🇲", label: "Հայերեն", nativeCta: "Շարունակել հայերենով" },
+  { code: "az", flag: "🇦🇿", label: "Azərbaycan", nativeCta: "Azərbaycanca davam et" },
 ];
 
 // Map browser language prefixes to our locales
@@ -23,6 +26,9 @@ const browserLangMap: Record<string, Locale> = {
   hi: "hi",
   fa: "fa",
   ar: "ar",
+  tr: "tr",
+  hy: "hy",
+  az: "az",
 };
 
 export function LanguagePopup() {
