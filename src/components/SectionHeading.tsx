@@ -14,7 +14,7 @@ export function SectionHeading({
   return (
     <div className={centered ? "text-center max-w-xl mx-auto" : "max-w-xl"}>
       {label && (
-        <p className="text-xs font-semibold uppercase tracking-wider text-navy-600 mb-2">
+        <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
           {label}
         </p>
       )}

@@ -1,17 +1,26 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy-50: #f0f4ff;
-  --color-navy-100: #e0eaff;
-  --color-navy-200: #c7d7fe;
-  --color-navy-300: #a4bcfc;
-  --color-navy-400: #7c96f8;
-  --color-navy-500: #5b6ef0;
-  --color-navy-600: #4650e5;
-  --color-navy-700: #3840c9;
-  --color-navy-800: #2f36a3;
-  --color-navy-900: #1b2059;
-  --color-navy-950: #0f1225;
+  --color-navy-50: #eef2ff;
+  --color-navy-100: #e0e7ff;
+  --color-navy-200: #c7d2fe;
+  --color-navy-300: #a5b4fc;
+  --color-navy-400: #818cf8;
+  --color-navy-500: #6366f1;
+  --color-navy-600: #4f46e5;
+  --color-navy-700: #4338ca;
+  --color-navy-800: #3730a3;
+  --color-navy-900: #1e1b4b;
+  --color-navy-950: #0f0d2e;
+
+  --color-azure-50: #eff6ff;
+  --color-azure-100: #dbeafe;
+  --color-azure-200: #bfdbfe;
+  --color-azure-300: #93c5fd;
+  --color-azure-400: #60a5fa;
+  --color-azure-500: #3b82f6;
+  --color-azure-600: #2563eb;
+  --color-azure-700: #1d4ed8;
 
   --font-sans: "Noto Sans Georgian", "Inter", system-ui, -apple-system, sans-serif;
 }
@@ -37,6 +46,6 @@ body {
 }
 
 ::selection {
-  background-color: #c7d7fe;
-  color: #1b2059;
+  background-color: #c7d2fe;
+  color: #1e1b4b;
 }
