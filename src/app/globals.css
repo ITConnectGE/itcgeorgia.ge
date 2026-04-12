@@ -13,18 +13,6 @@
   --color-navy-900: #1b2059;
   --color-navy-950: #0f1225;
 
-  --color-slate-50: #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-300: #cbd5e1;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-600: #475569;
-  --color-slate-700: #334155;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
-  --color-slate-950: #020617;
-
   --font-sans: "Noto Sans Georgian", "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -36,24 +24,16 @@
   src: url("https://fonts.gstatic.com/s/notosansgeorgian/v44/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpvnzFj-f5WK0OQV.woff2") format("woff2");
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
-  background: #ffffff;
-  color: #334155;
   font-family: "Noto Sans Georgian", "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 ::selection {

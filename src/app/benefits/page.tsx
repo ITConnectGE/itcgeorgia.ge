@@ -12,14 +12,14 @@ export default function BenefitsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-28 pb-16 sm:pt-36 sm:pb-20 bg-white border-b border-slate-100">
-        <div className="mx-auto max-w-[1280px] px-6">
+      <section className="py-16 sm:py-20 border-b border-slate-100">
+        <div className="mx-auto max-w-5xl px-5">
           <div className="max-w-2xl">
-            <p className="text-[12px] font-semibold uppercase tracking-wider text-navy-600 mb-2">უპირატესობები</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-600 mb-2">უპირატესობები</p>
             <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
               რატომ ადგილობრივი პარტნიორისგან?
             </h1>
-            <p className="mt-4 text-[15px] text-slate-500 leading-relaxed">
+            <p className="mt-4 text-sm text-slate-500 leading-relaxed">
               Microsoft, AWS და Google პროდუქტები პირდაპირაც შეგიძლიათ შეიძინოთ. მაგრამ ადგილობრივ რესელერთან თანამშრომლობას რეალური ბიზნეს-უპირატესობები აქვს.
             </p>
           </div>
@@ -28,7 +28,7 @@ export default function BenefitsPage() {
 
       {/* Benefits detail */}
       <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-[1280px] px-6 space-y-20">
+        <div className="mx-auto max-w-5xl px-5 space-y-20">
           {[
             {
               title: "ანგარიშსწორება ლარში",
@@ -59,12 +59,12 @@ export default function BenefitsPage() {
             <div key={b.title} className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
               <div>
                 <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-3">{b.title}</h2>
-                <p className="text-[14px] text-slate-500 leading-relaxed">{b.text}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{b.text}</p>
               </div>
               <div className="bg-slate-50 rounded-xl p-6">
                 <ul className="space-y-3">
                   {b.points.map((point) => (
-                    <li key={point} className="flex items-center gap-2.5 text-[13px] text-slate-700">
+                    <li key={point} className="flex items-center gap-2.5 text-sm text-slate-700">
                       <svg className="w-4 h-4 text-navy-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
@@ -80,11 +80,11 @@ export default function BenefitsPage() {
 
       {/* Comparison */}
       <section className="py-20 sm:py-24 bg-slate-50">
-        <div className="mx-auto max-w-[1280px] px-6">
+        <div className="mx-auto max-w-5xl px-5">
           <SectionHeading label="შედარება" title="პირდაპირ vs ადგილობრივი რესელერით" />
 
           <div className="mt-10 overflow-x-auto">
-            <table className="w-full min-w-[540px] text-[13px]">
+            <table className="w-full min-w-[540px] text-sm">
               <thead>
                 <tr className="border-b border-slate-200">
                   <th className="text-left py-3 px-4 font-medium text-slate-400">&nbsp;</th>
@@ -115,14 +115,14 @@ export default function BenefitsPage() {
 
       {/* CTA */}
       <section className="py-20 sm:py-24 bg-navy-900">
-        <div className="mx-auto max-w-[1280px] px-6 text-center">
+        <div className="mx-auto max-w-5xl px-5 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white">მზად ხართ უფრო მარტივი გზისთვის?</h2>
-          <p className="mt-3 text-[15px] text-slate-400 max-w-md mx-auto">დაგვიკავშირდით — კონსულტაცია უფასოა.</p>
+          <p className="mt-3 text-sm text-slate-400 max-w-md mx-auto">დაგვიკავშირდით — კონსულტაცია უფასოა.</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact" className="px-5 py-2.5 text-[14px] font-medium text-navy-900 bg-white rounded-lg hover:bg-slate-100 transition-colors">
+            <Link href="/contact" className="px-5 py-2.5 text-sm font-medium text-navy-900 bg-white rounded-lg hover:bg-slate-100 transition-colors">
               კონსულტაციის მოთხოვნა
             </Link>
-            <Link href="/services" className="px-5 py-2.5 text-[14px] font-medium text-slate-300 border border-slate-600 rounded-lg hover:bg-white/5 transition-colors">
+            <Link href="/services" className="px-5 py-2.5 text-sm font-medium text-slate-300 border border-slate-600 rounded-lg hover:bg-white/5 transition-colors">
               სერვისების ნახვა
             </Link>
           </div>

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -L -o /tmp/geosoft_home.html -w \"%{http_code}\" \"https://geosoft.ge\")",
+      "Bash(curl -s -L -o /tmp/geosoft_about.html -w \"%{http_code}\" \"https://geosoft.ge/about\")",
+      "Bash(curl -s -L -o /tmp/geosoft_services.html -w \"%{http_code}\" \"https://geosoft.ge/services\")",
+      "WebFetch(domain:geosoft.ge)",
+      "Bash(npm run:*)",
+      "Bash(start chrome:*)",
+      "Bash(gh api:*)",
+      "Bash(gh run:*)",
+      "WebFetch(domain:itconnectge.github.io)"
+    ]
+  }
+}

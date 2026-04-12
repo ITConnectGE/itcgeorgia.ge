@@ -2,29 +2,23 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-100 bg-slate-50">
-      <div className="mx-auto max-w-[1280px] px-6 py-16">
+    <footer className="border-t border-slate-200 bg-slate-50">
+      <div className="mx-auto max-w-5xl px-5 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2.5">
               <div className="w-8 h-8 bg-navy-900 rounded-lg flex items-center justify-center">
                 <span className="text-white text-xs font-bold">ITC</span>
               </div>
-              <span className="text-slate-900 font-semibold text-[15px]">
-                ITC Georgia
-              </span>
+              <span className="text-slate-900 font-semibold text-sm">ITC Georgia</span>
             </Link>
-            <p className="mt-4 text-[13px] text-slate-400 leading-relaxed max-w-[240px]">
+            <p className="mt-4 text-xs text-slate-400 leading-relaxed max-w-[240px]">
               Microsoft, AWS და Google პროდუქტების ადგილობრივი რესელერი საქართველოში.
             </p>
           </div>
 
-          {/* Company */}
           <div>
-            <h4 className="text-[12px] font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              კომპანია
-            </h4>
+            <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">კომპანია</h4>
             <ul className="space-y-2.5">
               {[
                 { name: "ჩვენ შესახებ", href: "/about" },
@@ -33,19 +27,14 @@ export function Footer() {
                 { name: "კონტაქტი", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-[13px] text-slate-500 hover:text-slate-800 transition-colors">
-                    {link.name}
-                  </Link>
+                  <Link href={link.href} className="text-sm text-slate-500 hover:text-slate-800 transition-colors">{link.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-[12px] font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              სერვისები
-            </h4>
+            <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">სერვისები</h4>
             <ul className="space-y-2.5">
               {[
                 { name: "Microsoft ლიცენზიები", href: "/services#microsoft" },
@@ -54,20 +43,15 @@ export function Footer() {
                 { name: "კონსულტაცია", href: "/services#consulting" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-[13px] text-slate-500 hover:text-slate-800 transition-colors">
-                    {link.name}
-                  </Link>
+                  <Link href={link.href} className="text-sm text-slate-500 hover:text-slate-800 transition-colors">{link.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-[12px] font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              კონტაქტი
-            </h4>
-            <ul className="space-y-2.5 text-[13px] text-slate-500">
+            <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">კონტაქტი</h4>
+            <ul className="space-y-2.5 text-sm text-slate-500">
               <li>032 2 44 11 11</li>
               <li>info@itcgeorgia.ge</li>
               <li className="leading-relaxed">
@@ -79,10 +63,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[12px] text-slate-400">
+          <p className="text-xs text-slate-400">
             &copy; {new Date().getFullYear()} შპს აითისი ჯორჯია
           </p>
-          <div className="flex items-center gap-4 text-[12px] text-slate-400">
+          <div className="flex items-center gap-4 text-xs text-slate-400">
             <span>Microsoft Partner</span>
             <span>AWS Partner</span>
             <span>Google Partner</span>

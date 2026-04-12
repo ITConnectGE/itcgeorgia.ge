@@ -12,16 +12,16 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-28 pb-16 sm:pt-36 sm:pb-20 bg-white border-b border-slate-100">
-        <div className="mx-auto max-w-[1280px] px-6">
+      <section className="py-16 sm:py-20 border-b border-slate-100">
+        <div className="mx-auto max-w-5xl px-5">
           <div className="max-w-2xl">
-            <p className="text-[12px] font-semibold uppercase tracking-wider text-navy-600 mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-600 mb-2">
               ჩვენ შესახებ
             </p>
             <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
               თქვენი ტექნოლოგიური პარტნიორი საქართველოში
             </h1>
-            <p className="mt-4 text-[15px] text-slate-500 leading-relaxed">
+            <p className="mt-4 text-sm text-slate-500 leading-relaxed">
               ITC Georgia არის კორპორატიული ლიცენზირებისა და ღრუბლოვანი სერვისების ადგილობრივი პარტნიორი. ვეხმარებით ქართულ ბიზნესებს Microsoft, AWS და Google პროდუქტების მარტივად შეძენაში.
             </p>
           </div>
@@ -30,11 +30,11 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-[1280px] px-6">
+        <div className="mx-auto max-w-5xl px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <SectionHeading label="მისია" title="რას ვაკეთებთ" centered={false} />
-              <div className="mt-5 space-y-4 text-[14px] text-slate-600 leading-relaxed">
+              <div className="mt-5 space-y-4 text-sm text-slate-600 leading-relaxed">
                 <p>
                   <strong className="text-slate-900">შპს აითისი ჯორჯია</strong> არის Microsoft, Amazon AWS და Google პროდუქტების ოფიციალური რესელერი საქართველოში.
                 </p>
@@ -56,8 +56,8 @@ export default function AboutPage() {
                   <div key={s.value} className="flex items-start gap-4">
                     <span className="text-2xl font-semibold text-navy-600 w-14 shrink-0">{s.value}</span>
                     <div>
-                      <p className="text-[14px] font-medium text-slate-900">{s.label}</p>
-                      <p className="text-[12px] text-slate-400">{s.sub}</p>
+                      <p className="text-sm font-medium text-slate-900">{s.label}</p>
+                      <p className="text-xs text-slate-400">{s.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="py-20 sm:py-24 bg-slate-50">
-        <div className="mx-auto max-w-[1280px] px-6">
+        <div className="mx-auto max-w-5xl px-5">
           <SectionHeading label="ღირებულებები" title="რა გამოგვარჩევს" />
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -79,8 +79,8 @@ export default function AboutPage() {
               { title: "მხარდაჭერა", desc: "L1 ტექნიკური მხარდაჭერა. ვენდორის სერვისიც ხელმისაწვდომია." },
             ].map((v) => (
               <div key={v.title} className="bg-white border border-slate-200 rounded-xl p-6">
-                <h3 className="text-[15px] font-semibold text-slate-900 mb-1.5">{v.title}</h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed">{v.desc}</p>
+                <h3 className="text-sm font-semibold text-slate-900 mb-1.5">{v.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -89,11 +89,11 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="py-20 sm:py-24 bg-navy-900">
-        <div className="mx-auto max-w-[1280px] px-6 text-center">
+        <div className="mx-auto max-w-5xl px-5 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white">მოგვიყევით თქვენი საჭიროებების შესახებ</h2>
-          <p className="mt-3 text-[15px] text-slate-400 max-w-md mx-auto">პირველი კონსულტაცია უფასოა.</p>
+          <p className="mt-3 text-sm text-slate-400 max-w-md mx-auto">პირველი კონსულტაცია უფასოა.</p>
           <div className="mt-8">
-            <Link href="/contact" className="px-5 py-2.5 text-[14px] font-medium text-navy-900 bg-white rounded-lg hover:bg-slate-100 transition-colors">
+            <Link href="/contact" className="px-5 py-2.5 text-sm font-medium text-navy-900 bg-white rounded-lg hover:bg-slate-100 transition-colors">
               დაგვიკავშირდით
             </Link>
           </div>

@@ -36,10 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ka" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+    <html lang="ka">
+      <body className="min-h-screen flex flex-col antialiased bg-white text-slate-700">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full">{children}</main>
         <Footer />
       </body>
     </html>
