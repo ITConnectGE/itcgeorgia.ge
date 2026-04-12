@@ -64,7 +64,12 @@ export function Footer({ dict, lang }: { dict: Dictionary; lang: Locale }) {
         </div>
 
         <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-slate-400">&copy; {new Date().getFullYear()} {f.copyright}</p>
+          <div className="flex items-center gap-4 text-xs text-slate-400">
+            <span>&copy; {new Date().getFullYear()} {f.copyright}</span>
+            <Link href={`${p}/terms`} className="hover:text-slate-600 transition-colors">
+              {lang === "ka" ? "წესები და პირობები" : "Terms & Conditions"}
+            </Link>
+          </div>
           <div className="flex items-center gap-4 text-xs text-slate-400">
             <span>Microsoft Partner</span>
             <span>AWS Partner</span>

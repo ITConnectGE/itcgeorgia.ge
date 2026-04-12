@@ -10,7 +10,8 @@
       "Bash(gh api:*)",
       "Bash(gh run:*)",
       "WebFetch(domain:itconnectge.github.io)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "WebSearch"
     ]
   }
 }
