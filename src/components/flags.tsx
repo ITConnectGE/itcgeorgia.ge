@@ -10,12 +10,22 @@ function Flag({ children, className = "" }: { children: React.ReactNode; classNa
 
 function GE({ className }: { className?: string }) {
   return (
-    <Flag className={className}>
-      <rect width="640" height="480" fill="#fff" />
-      <path d="M272 0h96v480h-96z" fill="#ff0000" />
-      <path d="M0 192h640v96H0z" fill="#ff0000" />
-      <path d="M120 72v24h-24v-24h-24v24H48V72H24v24H0v48h24v24h24v-24h24v24h24v-24h24V96h24V72zM496 72v24h-24v-24h-24v24h-24V72h-24v24h-24v48h24v24h24v-24h24v24h24v-24h24V96h24V72zM120 312v24h-24v-24h-24v24H48v-24H24v24H0v48h24v24h24v-24h24v24h24v-24h24v-48h24v-24zM496 312v24h-24v-24h-24v24h-24v-24h-24v24h-24v48h24v24h24v-24h24v24h24v-24h24v-48h24v-24z" fill="#ff0000" />
-    </Flag>
+    <svg className={`shrink-0 rounded-sm overflow-hidden ${className}`} viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" fill="#f00">
+      <path fill="#fff" d="M0 0h30v20H0z" />
+      <path d="M13 0h4v20h-4zM0 8h30v4H0z" />
+      {/* Top-left cross */}
+      <path d="M5.7968 1.954a5.4 5.4 0 0 0 1.4064 0 10.4 10.4 0 0 0 0 4.092 5.4 5.4 0 0 0-1.4064 0 10.4 10.4 0 0 0 0-4.092z" />
+      <path d="M4.5468 3.204a5.4 5.4 0 0 0 0 1.4064 10.4 10.4 0 0 0 4.092 0 5.4 5.4 0 0 0 0-1.4064 10.4 10.4 0 0 0-4.092 0z" />
+      {/* Top-right cross */}
+      <path d="M22.7968 1.954a5.4 5.4 0 0 0 1.4064 0 10.4 10.4 0 0 0 0 4.092 5.4 5.4 0 0 0-1.4064 0 10.4 10.4 0 0 0 0-4.092z" />
+      <path d="M21.5468 3.204a5.4 5.4 0 0 0 0 1.4064 10.4 10.4 0 0 0 4.092 0 5.4 5.4 0 0 0 0-1.4064 10.4 10.4 0 0 0-4.092 0z" />
+      {/* Bottom-left cross */}
+      <path d="M5.7968 13.954a5.4 5.4 0 0 0 1.4064 0 10.4 10.4 0 0 0 0 4.092 5.4 5.4 0 0 0-1.4064 0 10.4 10.4 0 0 0 0-4.092z" />
+      <path d="M4.5468 15.204a5.4 5.4 0 0 0 0 1.4064 10.4 10.4 0 0 0 4.092 0 5.4 5.4 0 0 0 0-1.4064 10.4 10.4 0 0 0-4.092 0z" />
+      {/* Bottom-right cross */}
+      <path d="M22.7968 13.954a5.4 5.4 0 0 0 1.4064 0 10.4 10.4 0 0 0 0 4.092 5.4 5.4 0 0 0-1.4064 0 10.4 10.4 0 0 0 0-4.092z" />
+      <path d="M21.5468 15.204a5.4 5.4 0 0 0 0 1.4064 10.4 10.4 0 0 0 4.092 0 5.4 5.4 0 0 0 0-1.4064 10.4 10.4 0 0 0-4.092 0z" />
+    </svg>
   );
 }
 
