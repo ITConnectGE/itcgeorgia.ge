@@ -26,6 +26,8 @@ export function Footer({ dict, lang }: { dict: Dictionary; lang: Locale }) {
                 { name: dict.nav.about, href: `${p}/about` },
                 { name: dict.nav.services, href: `${p}/services` },
                 { name: dict.nav.benefits, href: `${p}/benefits` },
+                { name: lang === "ka" ? "კორპორატიული შეთავაზება" : "Corporate Offers", href: `${p}/corporate` },
+                { name: lang === "ka" ? "ლიცენზიების გადმოტანა" : "License Transfer", href: `${p}/transfer` },
                 { name: dict.nav.contact, href: `${p}/contact` },
               ].map((link) => (
                 <li key={link.href}>
