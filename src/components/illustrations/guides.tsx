@@ -19,7 +19,7 @@ const images: Record<string, { src: string; alt: string }> = {
   },
   "cal": {
     src: "/images/guides/cal.jpg",
-    alt: "მომხმარებლების წვდომის მართვა",
+    alt: "Client Access License — წვდომის მართვა",
   },
   "rds": {
     src: "/images/guides/rds.jpg",
