@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #172554;
+  --color-navy-50: #f0f4ff;
+  --color-navy-100: #e0eaff;
+  --color-navy-200: #c7d7fe;
+  --color-navy-300: #a4bcfc;
+  --color-navy-400: #7c96f8;
+  --color-navy-500: #5b6ef0;
+  --color-navy-600: #4650e5;
+  --color-navy-700: #3840c9;
+  --color-navy-800: #2f36a3;
+  --color-navy-900: #1b2059;
+  --color-navy-950: #0f1225;
 
-  --color-graphite-50: #f8fafc;
-  --color-graphite-100: #f1f5f9;
-  --color-graphite-200: #e2e8f0;
-  --color-graphite-300: #cbd5e1;
-  --color-graphite-400: #94a3b8;
-  --color-graphite-500: #64748b;
-  --color-graphite-600: #475569;
-  --color-graphite-700: #334155;
-  --color-graphite-800: #1e293b;
-  --color-graphite-900: #0f172a;
-  --color-graphite-950: #020617;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
 
-  --font-sans: "BPG Nino Mtavruli", "Noto Sans Georgian", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Noto Sans Georgian", "Inter", system-ui, -apple-system, sans-serif;
 }
 
 @font-face {
@@ -34,16 +34,6 @@
   font-weight: 100 900;
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/notosansgeorgian/v44/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpvnzFj-f5WK0OQV.woff2") format("woff2");
-  unicode-range: U+10A0-10FF, U+2D00-2D2F, U+1C90-1CBF;
-}
-
-@font-face {
-  font-family: "Noto Sans Georgian";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/notosansgeorgian/v44/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpvnzFj-f5WK0OQV.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 * {
@@ -54,17 +44,19 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   background: #ffffff;
-  color: #1e293b;
-  font-family: "Noto Sans Georgian", "Segoe UI", system-ui, sans-serif;
+  color: #334155;
+  font-family: "Noto Sans Georgian", "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 ::selection {
-  background-color: #2563eb;
-  color: #ffffff;
+  background-color: #c7d7fe;
+  color: #1b2059;
 }

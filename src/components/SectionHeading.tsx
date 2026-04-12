@@ -3,7 +3,6 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   centered?: boolean;
-  light?: boolean;
 }
 
 export function SectionHeading({
@@ -11,32 +10,19 @@ export function SectionHeading({
   title,
   description,
   centered = true,
-  light = false,
 }: SectionHeadingProps) {
   return (
-    <div className={centered ? "text-center max-w-3xl mx-auto" : "max-w-3xl"}>
+    <div className={centered ? "text-center max-w-2xl mx-auto" : "max-w-2xl"}>
       {label && (
-        <span
-          className={`inline-block text-xs font-semibold uppercase tracking-widest mb-3 ${
-            light ? "text-brand-300" : "text-brand-600"
-          }`}
-        >
+        <p className="text-[12px] font-semibold uppercase tracking-wider text-navy-600 mb-2">
           {label}
-        </span>
+        </p>
       )}
-      <h2
-        className={`text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-tight tracking-tight ${
-          light ? "text-white" : "text-graphite-900"
-        }`}
-      >
+      <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 leading-tight">
         {title}
       </h2>
       {description && (
-        <p
-          className={`mt-4 text-lg leading-relaxed ${
-            light ? "text-graphite-300" : "text-graphite-500"
-          }`}
-        >
+        <p className="mt-3 text-[15px] text-slate-500 leading-relaxed">
           {description}
         </p>
       )}
