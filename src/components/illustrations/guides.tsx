@@ -15,8 +15,8 @@ const images: Record<string, { src: string; alt: string }> = {
     alt: "სერვერ რუმი",
   },
   "virtualization": {
-    src: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=400&fit=crop&q=80",
-    alt: "ვირტუალიზაციის ინფრასტრუქტურა",
+    src: "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero-Windows-Server-2025?scl=1",
+    alt: "Windows Server 2025 ვირტუალიზაცია",
   },
   "cal": {
     src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=400&fit=crop&q=80",
