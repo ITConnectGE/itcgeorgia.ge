@@ -1,34 +1,33 @@
-// Guide cover images — real photos from Unsplash (free, no attribution required for hotlinking)
-// Each image is a relevant, premium tech/business photo
+// Guide cover images — local files in /public/images/guides/
 
 const images: Record<string, { src: string; alt: string }> = {
   "windows-licensing": {
-    src: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&h=400&fit=crop&q=80",
-    alt: "Windows ლიცენზირების დოკუმენტაცია",
+    src: "/images/guides/windows-licensing.jpg",
+    alt: "Windows ლიცენზირების მიმოხილვა",
   },
   "windows-desktop": {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Windows_11_logo.svg/800px-Windows_11_logo.svg.png",
+    src: "/images/guides/windows-desktop.png",
     alt: "Windows 11 ლოგო",
   },
   "windows-server": {
-    src: "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/windows-server-702702?scl=1",
+    src: "/images/guides/windows-server.jpg",
     alt: "Windows Server Core ლიცენზირება",
   },
   "virtualization": {
-    src: "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero-Windows-Server-2025?scl=1",
-    alt: "Windows Server 2025 ვირტუალიზაცია",
+    src: "/images/guides/virtualization.jpg",
+    alt: "ვირტუალიზაციის ინფრასტრუქტურა",
   },
   "cal": {
-    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=400&fit=crop&q=80",
+    src: "/images/guides/cal.jpg",
     alt: "მომხმარებლების წვდომის მართვა",
   },
   "rds": {
-    src: "https://images.unsplash.com/photo-1616587894289-86480e533129?w=800&h=400&fit=crop&q=80",
+    src: "/images/guides/rds.jpg",
     alt: "დისტანციური სამუშაო მაგიდა",
   },
   "sql-server": {
-    src: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=400&fit=crop&q=80",
-    alt: "SQL მონაცემთა ბაზის კოდი",
+    src: "/images/guides/sql-server.jpg",
+    alt: "SQL მონაცემთა ბაზა",
   },
 };
 
@@ -56,7 +55,6 @@ export function GuideImage({
   );
 }
 
-// Legacy exports for backwards compatibility — now just renders GuideImage
 function makeComponent(slug: string) {
   return function IllustrationComponent({ className = "" }: { className?: string }) {
     return <GuideImage slug={slug} className={className} size="hero" />;
