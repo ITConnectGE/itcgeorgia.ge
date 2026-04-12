@@ -9,7 +9,8 @@
       "Bash(start chrome:*)",
       "Bash(gh api:*)",
       "Bash(gh run:*)",
-      "WebFetch(domain:itconnectge.github.io)"
+      "WebFetch(domain:itconnectge.github.io)",
+      "Bash(curl:*)"
     ]
   }
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
+import { MicrosoftLogo, AWSLogo, GoogleLogo } from "@/components/vendor-logos";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -19,7 +20,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
   const p = `/${lang}`;
 
   const vendorSlugs = ["microsoft", "aws", "google"] as const;
-  const accents = ["bg-azure-50 text-azure-600", "bg-amber-50 text-amber-600", "bg-emerald-50 text-emerald-600"];
+  const logos = [
+    <MicrosoftLogo key="ms" className="h-6" />,
+    <AWSLogo key="aws" className="h-5" />,
+    <GoogleLogo key="g" className="h-5" />,
+  ];
 
   return (
     <>
@@ -39,11 +44,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {dict.services.items.map((service, i) => (
               <div key={i} className="group border border-slate-200 rounded-xl p-6 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all">
-                <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-4 ${accents[i]}`}>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                  </svg>
-                </div>
+                <div className="mb-4">{logos[i]}</div>
                 <h3 className="text-base font-semibold text-slate-900 mb-3">{service.title}</h3>
                 <ul className="space-y-2 mb-5">
                   {service.bullets.map((item) => (

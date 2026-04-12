@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { locales, getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
+import { MicrosoftLogo, AWSLogo, GoogleLogo } from "@/components/vendor-logos";
 
 const vendorSlugs = ["microsoft", "aws", "google"] as const;
 type VendorSlug = (typeof vendorSlugs)[number];
@@ -46,9 +47,11 @@ export default async function VendorPage({
       <section className="py-16 sm:py-20 border-b border-slate-100 bg-gradient-to-b from-navy-50/40 to-white">
         <div className="mx-auto max-w-5xl px-5">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
-              {vendor === "microsoft" ? "Microsoft" : vendor === "aws" ? "Amazon AWS" : "Google"}
-            </p>
+            <div className="mb-4">
+              {vendor === "microsoft" && <MicrosoftLogo className="h-8" />}
+              {vendor === "aws" && <AWSLogo className="h-8" />}
+              {vendor === "google" && <GoogleLogo className="h-8" />}
+            </div>
             <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-tight">
               {v.title}
             </h1>

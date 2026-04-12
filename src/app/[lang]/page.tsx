@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { CloudServer } from "@/components/illustrations/CloudServer";
 import { DataMigration } from "@/components/illustrations/DataMigration";
+import { MicrosoftLogo, AWSLogo, GoogleLogo } from "@/components/vendor-logos";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -48,12 +49,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* Partners */}
       <section className="py-10 border-y border-slate-100 bg-slate-50/80">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="flex flex-wrap items-center justify-center gap-10 text-slate-300">
-            {["Microsoft", "AWS", "Google"].map((name) => (
-              <div key={name} className="flex items-center gap-2 hover:text-slate-500 transition-colors">
-                <span className="text-sm font-medium">{name}</span>
-              </div>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-12 opacity-40 hover:opacity-60 transition-opacity">
+            <MicrosoftLogo className="h-7" />
+            <AWSLogo className="h-7" />
+            <GoogleLogo className="h-7" />
           </div>
         </div>
       </section>
@@ -65,14 +64,14 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
             {dict.services.items.map((service, i) => {
               const slugs = ["microsoft", "aws", "google"];
-              const accents = ["bg-azure-50 text-azure-600", "bg-amber-50 text-amber-600", "bg-emerald-50 text-emerald-600"];
+              const logos = [
+                <MicrosoftLogo key="ms" className="h-6" />,
+                <AWSLogo key="aws" className="h-5" />,
+                <GoogleLogo key="g" className="h-5" />,
+              ];
               return (
                 <div key={i} className="group border border-slate-200 rounded-xl p-6 hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all">
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-4 ${accents[i]}`}>
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                    </svg>
-                  </div>
+                  <div className="mb-4">{logos[i]}</div>
                   <h3 className="text-base font-semibold text-slate-900 mb-3">{service.title}</h3>
                   <ul className="space-y-2 mb-5">
                     {service.bullets.map((item) => (
