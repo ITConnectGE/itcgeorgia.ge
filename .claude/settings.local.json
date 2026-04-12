@@ -12,7 +12,8 @@
       "WebFetch(domain:itconnectge.github.io)",
       "Bash(curl:*)",
       "WebSearch",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:itcgeorgia.ge)"
     ]
   }
 }

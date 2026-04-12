@@ -3,7 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getAllGuides } from "@/components/RelatedPosts";
-import { guideIllustrations } from "@/components/illustrations/guides";
+import { GuideImage } from "@/components/illustrations/guides";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -78,18 +78,13 @@ export default async function GuidesPage({ params }: { params: Promise<{ lang: s
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {guides.map((guide) => {
-                    const Illust = guideIllustrations[guide.slug];
                     return (
                       <Link
                         key={guide.slug}
                         href={guide.href}
                         className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
                       >
-                        {Illust && (
-                          <div className="h-36 border-b border-slate-100">
-                            <Illust className="w-full h-full" />
-                          </div>
-                        )}
+                        <GuideImage slug={guide.slug} className="h-40" />
                         <div className="p-5">
                           <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-2">
                             {guide.tag}
