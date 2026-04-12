@@ -211,20 +211,26 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* Testimonials / Social Proof */}
+      {/* Testimonials */}
       <section className="py-16 sm:py-24 bg-slate-50">
         <div className="mx-auto max-w-5xl px-5">
           <SectionHeading
             label={ka ? "კლიენტები" : "Clients"}
             title={ka ? "ჩვენი კლიენტების გამოხმაურება" : "What Our Clients Say"}
           />
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                quote: ka ? "Microsoft 365-ზე მიგრაცია სრულიად უპრობლემოდ ჩატარდა. ITC Georgia-ს გუნდმა ყველაფერი თავის თავზე აიღო." : "Migration to Microsoft 365 was completely seamless. ITC Georgia's team handled everything.",
+                quote: ka ? "200-მდე მეილის მიგრაცია განხორციელდა სამუშაო პროცესის შეფერხების გარეშე. ITC Georgia-ს გუნდმა ყველაფერი პროფესიონალურად წარმართა." : "Migration of ~200 mailboxes was completed without any work disruption. ITC Georgia's team handled everything professionally.",
+                name: ka ? "არჩილი" : "Archil",
+                company: ka ? "კორპორატიული კლიენტი" : "Corporate Client",
+                service: "Email Migration",
+              },
+              {
+                quote: ka ? "Microsoft 365-ზე მიგრაცია სრულიად უპრობლემოდ ჩატარდა. გუნდმა ყველაფერი თავის თავზე აიღო." : "Migration to Microsoft 365 was completely seamless. The team handled everything.",
                 name: ka ? "გიორგი მ." : "Giorgi M.",
                 company: ka ? "სამშენებლო კომპანია" : "Construction Company",
-                service: "Microsoft 365 Migration",
+                service: "Microsoft 365",
               },
               {
                 quote: ka ? "ლარში ანგარიშსწორება და ქართული ინვოისი ჩვენი ბუღალტერიისთვის ძალიან მოხერხებულია." : "GEL billing and Georgian invoices are very convenient for our accounting.",
@@ -236,50 +242,56 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 quote: ka ? "AWS ხარჯების ოპტიმიზაციაში დაგვეხმარნენ და თვეში 30%-ით ნაკლებს ვიხდით." : "They helped us optimize AWS costs and we pay 30% less per month.",
                 name: ka ? "დავით შ." : "David Sh.",
                 company: ka ? "ტექ სტარტაპი" : "Tech Startup",
-                service: "AWS Optimization",
+                service: "AWS",
               },
             ].map((t, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
-                <svg className="w-6 h-6 text-navy-100 mb-3" viewBox="0 0 24 24" fill="currentColor">
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-5">
+                <svg className="w-5 h-5 text-navy-100 mb-2" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
                 </svg>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">{t.quote}</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-slate-900">{t.name}</p>
+                <p className="text-sm text-slate-600 leading-relaxed mb-3">{t.quote}</p>
+                <div>
+                  <p className="text-sm font-medium text-slate-900">{t.name}</p>
+                  <div className="flex items-center justify-between mt-0.5">
                     <p className="text-xs text-slate-400">{t.company}</p>
+                    <span className="text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">{t.service}</span>
                   </div>
-                  <span className="text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">{t.service}</span>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Client logos placeholder */}
-          <div className="mt-12">
-            <p className="text-center text-xs text-slate-400 mb-6">
-              {ka ? "ჩვენ ენდობიან" : "Trusted by"}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="w-24 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
-                  <span className="text-[10px] text-slate-300 font-medium">LOGO</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Process */}
+      {/* Process — 3 steps */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-5xl px-5">
-          <SectionHeading label={dict.process.label} title={dict.process.title} description={dict.process.description} />
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {dict.process.steps.map((step) => (
+          <SectionHeading
+            label={ka ? "პროცესი" : "Process"}
+            title={ka ? "როგორ მუშაობს" : "How It Works"}
+            description={ka ? "3 მარტივი ნაბიჯი — კონსულტაციიდან მხარდაჭერამდე." : "3 simple steps — from consultation to support."}
+          />
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                n: "01",
+                title: ka ? "კონსულტაცია და შეთავაზება" : "Consultation & Quote",
+                desc: ka ? "მოგვიყევით საჭიროებების შესახებ — შემოგთავაზებთ ოპტიმალურ პროდუქტს და ფასს ლარში, დღგ-ს ჩათვლით." : "Tell us your needs — we suggest the optimal product and provide pricing in GEL with VAT.",
+              },
+              {
+                n: "02",
+                title: ka ? "შეძენა და მიგრაცია" : "Purchase & Migration",
+                desc: ka ? "ლიცენზიების აქტივაცია და საჭიროებისას სამუშაო გარემოს გადატანა — შეუფერხებლად." : "License activation and workspace migration if needed — seamlessly.",
+              },
+              {
+                n: "03",
+                title: ka ? "მხარდაჭერა" : "Support",
+                desc: ka ? "უწყვეტი ტექნიკური მხარდაჭერა და კონსულტაცია — ყოველთვის ხელმისაწვდომი." : "Ongoing technical support and consultation — always available.",
+              },
+            ].map((step) => (
               <div key={step.n} className="text-center">
-                <span className="text-2xl font-semibold text-navy-100">{step.n}</span>
-                <h3 className="mt-1 text-sm font-semibold text-slate-900">{step.title}</h3>
+                <span className="inline-flex w-10 h-10 items-center justify-center bg-navy-50 text-navy-600 text-sm font-bold rounded-full mb-3">{step.n}</span>
+                <h3 className="text-sm font-semibold text-slate-900">{step.title}</h3>
                 <p className="mt-1 text-xs text-slate-400 leading-relaxed">{step.desc}</p>
               </div>
             ))}
@@ -301,15 +313,11 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 { q: "მიგრაცია რამდენ ხანს იღებს?", a: "სტანდარტული მიგრაცია 1-5 სამუშაო დღეში სრულდება, მომხმარებლების რაოდენობისა და მონაცემების მოცულობის მიხედვით. სერვისი არ წყდება პროცესის განმავლობაში." },
                 { q: "შევძლებ თუ არა ლარში გადახდას?", a: "დიახ! ყველა ანგარიშსწორება ხდება ქართულ ლარში. იღებთ ანგარიშფაქტურას დღგ-ს ჩათვლით, სტანდარტული საბანკო გადარიცხვით." },
                 { q: "ვენდორის სერვის ცენტრთან კომუნიკაცია ჩემი საქმე იქნება?", a: "არა. ჩვენ უზრუნველვყოფთ Level 1 მხარდაჭერას. საჭიროებისას, ვენდორთან კომუნიკაციას ჩვენ ვაწარმოებთ თქვენ მაგივრად. ამასთან, პირდაპირ ვენდორის მხარდაჭერაზეც გაქვთ წვდომა." },
-                { q: "იღებთ თუ არა საწარმო კლიენტებს?", a: "დიახ! გვაქვს სპეციალური კორპორატიული შეთავაზებები 250+ მომხმარებლის მქონე ორგანიზაციებისთვის, მათ შორის დედიკატებული ანგარიშის მენეჯერი და SLA." },
-                { q: "არის თუ არა ხელშეკრულება სავალდებულო?", a: "ლიცენზიების შეძენა ხელშეკრულების საფუძველზე ხდება, რაც ორივე მხარეს იცავს. ხელშეკრულების პირობები მოქნილია და თქვენს საჭიროებებზეა მორგებული." },
               ] : [
                 { q: "How much does a Microsoft 365 license cost?", a: "Pricing starts from ~$6/user/month (Business Basic). Final price depends on plan and user count. Request a free quote." },
                 { q: "How long does migration take?", a: "Standard migration completes in 1-5 business days, depending on users and data volume. No service interruption during the process." },
                 { q: "Can I pay in GEL?", a: "Yes! All billing is in Georgian Lari. You receive VAT-inclusive invoices via standard bank transfer." },
                 { q: "Do I have to deal with vendor support myself?", a: "No. We provide L1 support. When needed, we handle vendor communication on your behalf. Direct vendor support is also available." },
-                { q: "Do you serve enterprise clients?", a: "Yes! We offer special corporate packages for organizations with 250+ users, including a dedicated account manager and SLA." },
-                { q: "Is a contract required?", a: "License purchases are contract-based to protect both parties. Contract terms are flexible and tailored to your needs." },
               ]}
             />
           </div>

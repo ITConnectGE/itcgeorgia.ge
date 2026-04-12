@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap");
 
 @theme inline {
   --color-navy-50: #eef2ff;
@@ -25,38 +26,6 @@
   --font-sans: "Noto Sans Georgian", "Inter", system-ui, -apple-system, sans-serif;
 }
 
-@font-face {
-  font-family: "Noto Sans Georgian";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/notosansgeorgian/v48/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpvnzFj-.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Noto Sans Georgian";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/notosansgeorgian/v48/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpVzFj-.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Noto Sans Georgian";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/notosansgeorgian/v48/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdps5y1j-.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Noto Sans Georgian";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/notosansgeorgian/v48/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpsAy1j-.ttf") format("truetype");
-}
-
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -74,14 +43,12 @@ body {
   color: #1e1b4b;
 }
 
-/* Accessibility: focus-visible for keyboard navigation */
 *:focus-visible {
   outline: 2px solid #6366f1;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Animation safety: never hide content via opacity-0 without JS guarantee */
 .animate-on-scroll {
   opacity: 1 !important;
   transform: none !important;
