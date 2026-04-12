@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { GuideImage } from "@/components/illustrations/guides";
 
 type Post = {
   href: string;
@@ -19,36 +18,30 @@ export function RelatedPosts({
   title?: string;
 }) {
   return (
-    <section className="py-16 sm:py-20 border-t border-slate-100 bg-slate-50">
+    <section className="py-12 sm:py-16 border-t border-slate-100 bg-slate-50">
       <div className="mx-auto max-w-5xl px-5">
-        <h2 className="text-lg font-semibold text-slate-900 mb-6">
+        <h2 className="text-sm font-semibold text-slate-900 mb-4">
           {title || (lang === "ka" ? "დაკავშირებული სტატიები" : "Related Articles")}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post) => {
-            return (
-              <Link
-                key={post.href}
-                href={post.href}
-                className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-azure-200 hover:shadow-md hover:shadow-azure-500/5 transition-all"
-              >
-                {post.slug && (
-                  <GuideImage slug={post.slug} className="h-36" />
-                )}
-                <div className="p-5">
-                  <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full mb-2">
-                    {post.tag}
-                  </span>
-                  <h3 className="text-sm font-semibold text-slate-900 group-hover:text-azure-700 transition-colors leading-snug mb-1.5">
-                    {post.title}
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+        <div className="border border-slate-200 rounded-xl overflow-hidden">
+          <table className="w-full text-sm">
+            <tbody>
+              {posts.map((post, i) => (
+                <tr key={post.href} className={`hover:bg-white transition-colors ${i < posts.length - 1 ? "border-b border-slate-100" : ""}`}>
+                  <td className="py-3 px-4 w-28">
+                    <span className="inline-block text-[10px] font-medium text-azure-600 bg-azure-50 px-2 py-0.5 rounded-full">
+                      {post.tag}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4">
+                    <Link href={post.href} className="text-sm font-medium text-slate-900 hover:text-azure-600 transition-colors">
+                      {post.title}
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
