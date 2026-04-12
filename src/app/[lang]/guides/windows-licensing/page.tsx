@@ -86,6 +86,7 @@ export default async function WindowsLicensingGuidePage({
               { href: "#server", label: ka ? "Windows Server ლიცენზირების მოდელი" : "Windows Server Licensing Model" },
               { href: "#virtualization", label: ka ? "ვირტუალიზაციის უფლებები" : "Virtualization Rights" },
               { href: "#cal", label: ka ? "CAL — Client Access License" : "CAL — Client Access License" },
+              { href: "#rds", label: ka ? "RDS — Remote Desktop Services" : "RDS — Remote Desktop Services" },
               { href: "#sql", label: ka ? "SQL Server ლიცენზირება" : "SQL Server Licensing" },
             ].map((item) => (
               <a
@@ -671,28 +672,263 @@ export default async function WindowsLicensingGuidePage({
             </div>
           </div>
 
-          {/* RDS CAL */}
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h3 className="text-base font-semibold text-slate-900 mb-2">
+          {/* Brief RDS mention in CAL section */}
+          <div className="bg-navy-50 border border-navy-100 rounded-xl p-5">
+            <p className="text-sm text-navy-800">
               {ka
-                ? "RDS CAL — Remote Desktop Services"
-                : "RDS CAL — Remote Desktop Services"}
+                ? "Remote Desktop Services-ის (RDS) გამოყენებისას დამატებით RDS CAL-ები სჭირდება. დეტალურად იხილეთ:"
+                : "Using Remote Desktop Services (RDS) requires additional RDS CALs. See details:"}
+              {" "}
+              <a href="#rds" className="font-medium text-azure-600 hover:underline">RDS &darr;</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
+          §4.5  RDS — Remote Desktop Services (NEW)
+         ══════════════════════════════════════════════════ */}
+      <section id="rds" className="py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-azure-600 mb-2">
+            {ka ? "დისტანციური წვდომა" : "Remote Access"}
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-4">
+            RDS — Remote Desktop Services
+          </h2>
+          <p className="text-sm text-slate-600 leading-relaxed max-w-3xl mb-10">
+            {ka
+              ? "Remote Desktop Services (RDS) საშუალებას აძლევს მომხმარებლებს, დისტანციურად იმუშაონ Windows Server-ზე სრული დესკტოპის ან ცალკეული აპლიკაციების (RemoteApp) რეჟიმში. RDS-ის გამოყენება მოითხოვს სპეციფიკურ ლიცენზირებას Windows Server-ის ძირითადი ლიცენზიების გარდა."
+              : "Remote Desktop Services (RDS) allows users to remotely work on Windows Server in full desktop or individual application (RemoteApp) mode. Using RDS requires specific licensing in addition to the base Windows Server licenses."}
+          </p>
+
+          {/* When is RDS licensing needed */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              {ka ? "როდის არის საჭირო RDS ლიცენზია?" : "When is an RDS license required?"}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="bg-red-50 border border-red-100 rounded-xl p-5">
+                <h4 className="text-sm font-semibold text-red-800 mb-3">
+                  {ka ? "საჭიროა RDS CAL" : "RDS CAL Required"}
+                </h4>
+                <ul className="space-y-2">
+                  {(ka
+                    ? [
+                        "თანამშრომლები RDP-ით უკავშირდებიან სერვერს სამუშაო დესკტოპით",
+                        "RemoteApp-ის გამოყენება (ცალკეული აპლიკაციის პუბლიკაცია)",
+                        "VDI (Virtual Desktop Infrastructure) სესიაზე დაფუძნებული",
+                        "სერვერზე 2-ზე მეტი მომხმარებლის ერთდროული RDP სესია",
+                        "RD Web Access, RD Gateway, RD Connection Broker-ის გამოყენება",
+                      ]
+                    : [
+                        "Employees connect to server via RDP for a work desktop",
+                        "RemoteApp usage (publishing individual applications)",
+                        "VDI (Virtual Desktop Infrastructure) session-based",
+                        "More than 2 concurrent RDP sessions on a server",
+                        "Using RD Web Access, RD Gateway, RD Connection Broker",
+                      ]
+                  ).map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-red-700">
+                      <svg className="w-4 h-4 text-red-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-5">
+                <h4 className="text-sm font-semibold text-emerald-800 mb-3">
+                  {ka ? "არ არის საჭირო RDS CAL" : "RDS CAL NOT Required"}
+                </h4>
+                <ul className="space-y-2">
+                  {(ka
+                    ? [
+                        "ადმინისტრაციული RDP (2 კონკურენტული სესია ყოველთვის უფასოა)",
+                        "სერვერის მართვა Server Manager-ით ან PowerShell-ით",
+                        "ფაილების/პრინტერის გაზიარება ქსელში (მხოლოდ Windows Server CAL)",
+                        "Active Directory, DNS, DHCP წვდომა (მხოლოდ Windows Server CAL)",
+                      ]
+                    : [
+                        "Administrative RDP (2 concurrent sessions always free)",
+                        "Server management via Server Manager or PowerShell",
+                        "File/printer sharing on the network (Windows Server CAL only)",
+                        "Active Directory, DNS, DHCP access (Windows Server CAL only)",
+                      ]
+                  ).map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-emerald-700">
+                      <Check />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* RDS CAL types */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              {ka ? "RDS CAL-ის ტიპები" : "RDS CAL Types"}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="bg-white border border-slate-200 rounded-xl p-6">
+                <h4 className="text-base font-semibold text-slate-900 mb-2">RDS User CAL</h4>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {ka
+                    ? "მიენიჭება კონკრეტულ მომხმარებელს. ის შეუძლია დაუკავშირდეს RDS-ს ნებისმიერი მოწყობილობიდან. იდეალურია, თუ თანამშრომლები სხვადასხვა მოწყობილობას იყენებენ (ლეპტოპი, სახლის PC, ტაბლეტი)."
+                    : "Assigned to a specific user. They can connect to RDS from any device. Ideal when employees use multiple devices (laptop, home PC, tablet)."}
+                </p>
+              </div>
+              <div className="bg-white border border-slate-200 rounded-xl p-6">
+                <h4 className="text-base font-semibold text-slate-900 mb-2">RDS Device CAL</h4>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {ka
+                    ? "მიენიჭება კონკრეტულ მოწყობილობას. ამ მოწყობილობიდან ნებისმიერ მომხმარებელს შეუძლია RDS-ზე დაკავშირება. იდეალურია thin client-ებისთვის ან საერთო სამუშაო სადგურებისთვის."
+                    : "Assigned to a specific device. Any user can connect to RDS from that device. Ideal for thin clients or shared workstations."}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Full licensing stack */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              {ka ? "RDS-ის სრული ლიცენზირების სტეკი" : "Complete RDS Licensing Stack"}
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              {ka
+                ? "RDS-ის გამოსაყენებლად 3 ლიცენზიის კომბინაცია სჭირდება:"
+                : "To use RDS, a combination of 3 licenses is needed:"}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                {
+                  n: "1",
+                  title: "Windows Server",
+                  desc: ka
+                    ? "Core-based ლიცენზია ფიზიკური სერვერისთვის (Standard ან Datacenter)"
+                    : "Core-based license for the physical server (Standard or Datacenter)",
+                },
+                {
+                  n: "2",
+                  title: "Windows Server CAL",
+                  desc: ka
+                    ? "ყველა მომხმარებლისთვის ან მოწყობილობისთვის (User ან Device)"
+                    : "For every user or device (User or Device)",
+                },
+                {
+                  n: "3",
+                  title: "RDS CAL",
+                  desc: ka
+                    ? "ყველა RDS მომხმარებლისთვის ან მოწყობილობისთვის (User ან Device)"
+                    : "For every RDS user or device (User or Device)",
+                },
+              ].map((item) => (
+                <div key={item.n} className="bg-navy-50 border border-navy-100 rounded-xl p-5 text-center">
+                  <span className="inline-flex w-8 h-8 items-center justify-center bg-navy-900 text-white text-sm font-bold rounded-full mb-3">{item.n}</span>
+                  <h4 className="text-sm font-semibold text-slate-900 mb-1">{item.title}</h4>
+                  <p className="text-xs text-slate-500">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Calculation example */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              {ka ? "გამოთვლის მაგალითი" : "Calculation Example"}
+            </h3>
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+              <div className="p-5 bg-slate-50 border-b border-slate-200">
+                <p className="text-sm font-medium text-slate-900">
+                  {ka
+                    ? "სცენარი: 30 თანამშრომელი იყენებს RDS-ს 1 სერვერზე (2 პროცესორი, თითო 8 core)"
+                    : "Scenario: 30 employees use RDS on 1 server (2 processors, 8 cores each)"}
+                </p>
+              </div>
+              <div className="p-5">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-100">
+                      <th className="text-left py-2 text-slate-500 font-medium">{ka ? "ლიცენზია" : "License"}</th>
+                      <th className="text-center py-2 text-slate-500 font-medium">{ka ? "რაოდენობა" : "Quantity"}</th>
+                      <th className="text-right py-2 text-slate-500 font-medium">{ka ? "შენიშვნა" : "Note"}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-slate-50">
+                      <td className="py-2.5 font-medium text-slate-900">Windows Server Standard</td>
+                      <td className="py-2.5 text-center text-slate-600">16 cores (8 x 2-core packs)</td>
+                      <td className="py-2.5 text-right text-xs text-slate-400">{ka ? "მინ. 16 core" : "Min 16 cores"}</td>
+                    </tr>
+                    <tr className="border-b border-slate-50">
+                      <td className="py-2.5 font-medium text-slate-900">Windows Server User CAL</td>
+                      <td className="py-2.5 text-center text-slate-600">30</td>
+                      <td className="py-2.5 text-right text-xs text-slate-400">{ka ? "თითო მომხმარებლისთვის" : "Per user"}</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2.5 font-medium text-azure-700">RDS User CAL</td>
+                      <td className="py-2.5 text-center text-azure-700 font-medium">30</td>
+                      <td className="py-2.5 text-right text-xs text-azure-500">{ka ? "თითო RDS მომხმარებლისთვის" : "Per RDS user"}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="p-5 bg-azure-50 border-t border-azure-100">
+                <p className="text-sm text-azure-800">
+                  {ka
+                    ? "სულ: 1x Windows Server Standard (8 x 2-core pack) + 30x User CAL + 30x RDS User CAL"
+                    : "Total: 1x Windows Server Standard (8 x 2-core packs) + 30x User CALs + 30x RDS User CALs"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Multiserver / Farm */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              {ka ? "RDS Farm — მრავალსერვერული გარემო" : "RDS Farm — Multi-Server Environment"}
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed mb-4">
               {ka
-                ? "თუ თანამშრომლები Remote Desktop Services-ს (სესიაზე დაფუძნებულ დესკტოპებს ან RemoteApp-ს) იყენებენ, Windows Server CAL-ის გარდა, საჭიროა ცალკე RDS CAL. RDS CAL ასევე არსებობს User და Device ვარიანტებში. ეს არ ეხება ადმინისტრაციულ RDP კავშირებს (2 კონკურენტული სესია ყოველთვის ხელმისაწვდომია ადმინისტრირებისთვის)."
-                : "If employees use Remote Desktop Services (session-based desktops or RemoteApp), a separate RDS CAL is required in addition to the Windows Server CAL. RDS CALs also come in User and Device variants. This does not apply to administrative RDP connections (2 concurrent sessions are always available for administration)."}
+                ? "დიდ ორგანიზაციებში ხშირად რამდენიმე RDS სერვერი მუშაობს ერთად (RDS Farm). ასეთ შემთხვევაში:"
+                : "In larger organizations, multiple RDS servers often work together (RDS Farm). In this case:"}
             </p>
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <p className="text-sm font-medium text-slate-900 mb-1">
-                {ka ? "მაგალითი: 50 მომხმარებელი RDS-ით" : "Example: 50 users with RDS"}
-              </p>
-              <p className="text-sm text-slate-600">
-                {ka
-                  ? "საჭიროა: Windows Server ლიცენზია (core-based) + 50 Windows Server User CAL + 50 RDS User CAL. სულ 3 ტიპის ლიცენზია."
-                  : "Required: Windows Server license (core-based) + 50 Windows Server User CALs + 50 RDS User CALs. Three license types in total."}
-              </p>
-            </div>
+            <ul className="space-y-2 mb-4">
+              {(ka
+                ? [
+                    "RDS User CAL მოქმედებს Farm-ის ყველა სერვერზე - არ არის საჭირო ცალ-ცალკე",
+                    "თითოეულ სერვერს ცალკე სჭირდება Windows Server ლიცენზია (core-based)",
+                    "RD Connection Broker, RD Web Access, RD Gateway - ცალკე როლის სერვერებს ასევე სჭირდებათ ლიცენზია",
+                    "RD Licensing Server მართავს RDS CAL-ების გაცემას ავტომატურად",
+                  ]
+                : [
+                    "RDS User CAL works across all servers in the Farm - no per-server purchase needed",
+                    "Each server separately needs a Windows Server license (core-based)",
+                    "RD Connection Broker, RD Web Access, RD Gateway role servers also need licensing",
+                    "RD Licensing Server manages RDS CAL distribution automatically",
+                  ]
+              ).map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
+                  <Check />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* External Connector */}
+          <div className="bg-amber-50 border border-amber-100 rounded-xl p-6">
+            <h4 className="text-sm font-semibold text-amber-800 mb-2">
+              {ka ? "გარე მომხმარებლები (External Connector)" : "External Users (External Connector)"}
+            </h4>
+            <p className="text-sm text-amber-700 leading-relaxed">
+              {ka
+                ? "თუ RDS-ზე წვდომა გარე მომხმარებლებსაც სჭირდებათ (კონტრაქტორები, კლიენტები), შეგიძლიათ ცალკე RDS CAL შეიძინოთ თითოეულისთვის, ან Windows Server External Connector ლიცენზია, რომელიც შეუზღუდავ გარე წვდომას იძლევა ერთ სერვერზე. External Connector ეკონომიურია, როცა გარე მომხმარებლების რაოდენობა დიდი ან ცვალებადია."
+                : "If external users (contractors, clients) also need RDS access, you can purchase individual RDS CALs for each, or a Windows Server External Connector license that provides unlimited external access to a single server. External Connector is cost-effective when the number of external users is large or fluctuating."}
+            </p>
           </div>
         </div>
       </section>
