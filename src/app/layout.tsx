@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguagePopup } from "@/components/LanguagePopup";
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ka">
       <body className="min-h-screen flex flex-col antialiased bg-white text-slate-700">
+        <LanguagePopup />
         {children}
       </body>
     </html>
