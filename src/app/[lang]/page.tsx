@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getDictionary, type Locale } from "@/lib/i18n";
+import { CloudServer } from "@/components/illustrations/CloudServer";
+import { DataMigration } from "@/components/illustrations/DataMigration";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -12,17 +14,22 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* Hero */}
       <section className="relative py-16 sm:py-24 bg-gradient-to-b from-navy-50/60 via-white to-white">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold text-azure-600 mb-3 tracking-wide">{dict.hero.badge}</p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-snug">{dict.hero.title}</h1>
-            <p className="mt-4 text-base text-slate-500 leading-relaxed">{dict.hero.subtitle}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={`${p}/contact`} className="inline-block px-5 py-2.5 text-sm font-medium text-white bg-navy-900 rounded-lg hover:bg-navy-800 shadow-sm shadow-navy-900/10 transition-all">
-                {dict.hero.cta}
-              </Link>
-              <Link href={`${p}/services`} className="inline-block px-5 py-2.5 text-sm font-medium text-slate-700 border border-slate-200 rounded-lg hover:border-slate-300 hover:bg-slate-50 transition-all">
-                {dict.hero.ctaSecondary}
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-xs font-semibold text-azure-600 mb-3 tracking-wide">{dict.hero.badge}</p>
+              <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 leading-snug">{dict.hero.title}</h1>
+              <p className="mt-4 text-base text-slate-500 leading-relaxed">{dict.hero.subtitle}</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href={`${p}/contact`} className="inline-block px-5 py-2.5 text-sm font-medium text-white bg-navy-900 rounded-lg hover:bg-navy-800 shadow-sm shadow-navy-900/10 transition-all">
+                  {dict.hero.cta}
+                </Link>
+                <Link href={`${p}/services`} className="inline-block px-5 py-2.5 text-sm font-medium text-slate-700 border border-slate-200 rounded-lg hover:border-slate-300 hover:bg-slate-50 transition-all">
+                  {dict.hero.ctaSecondary}
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:flex justify-center">
+              <CloudServer className="w-full max-w-sm" />
             </div>
           </div>
           <div className="mt-12 flex flex-wrap gap-6 text-xs text-slate-400">
@@ -91,6 +98,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-navy-50/40">
         <div className="mx-auto max-w-5xl px-5">
           <SectionHeading label={dict.migration.label} title={dict.migration.title} description={dict.migration.description} />
+          <div className="mt-8 flex justify-center">
+            <DataMigration className="w-full max-w-md" />
+          </div>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
             {dict.migration.items.map((item) => (
               <div key={item.title} className="group bg-white border border-slate-200 rounded-xl p-6 hover:border-navy-200 hover:shadow-md hover:shadow-navy-500/5 transition-all">

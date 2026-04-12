@@ -40,7 +40,7 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
     <>
       <div className="h-16 w-full shrink-0" />
       <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-5xl h-full px-5 flex items-center justify-between">
+        <div className="mx-auto max-w-6xl h-full px-5 flex items-center justify-between">
           <Link href={prefix} className="flex items-center gap-2.5 shrink-0">
             <div className="w-8 h-8 bg-navy-900 rounded-lg flex items-center justify-center">
               <span className="text-white text-xs font-bold">ITC</span>
@@ -53,7 +53,7 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
               <Link
                 key={key}
                 href={i === 0 ? prefix : `${prefix}${navPaths[i]}`}
-                className="px-3 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                className="px-2.5 py-2 text-xs text-slate-500 hover:text-slate-900 transition-colors"
               >
                 {dict.nav[key]}
               </Link>
