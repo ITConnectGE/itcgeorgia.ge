@@ -57,7 +57,7 @@ export function Footer({ dict, lang }: { dict: Dictionary; lang: Locale }) {
           <div>
             <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">{f.contactLabel}</h4>
             <ul className="space-y-2.5 text-sm text-slate-500">
-              <li>032 2 44 11 11</li>
+              <li>+995 32 2 420 710</li>
               <li>info@itcgeorgia.ge</li>
               <li className="leading-relaxed">
                 {f.address[0]}<br />{f.address[1]}

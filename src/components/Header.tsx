@@ -99,8 +99,8 @@ export function Header({ dict, lang }: { dict: Dictionary; lang: Locale }) {
               )}
             </div>
 
-            <Link href="tel:032244111" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
-              032 2 44 11 11
+            <Link href="tel:+995322420710" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
+              +995 32 2 420 710
             </Link>
             <Link
               href={`${prefix}/contact`}

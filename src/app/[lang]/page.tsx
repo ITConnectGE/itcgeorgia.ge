@@ -392,8 +392,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <Link href={`${p}/contact`} className="inline-block px-5 py-2.5 text-sm font-medium text-navy-900 bg-white rounded-lg hover:bg-navy-50 shadow-sm transition-all">
               {dict.cta.button}
             </Link>
-            <Link href="tel:032244111" className="inline-block px-5 py-2.5 text-sm font-medium text-navy-200 border border-navy-700 rounded-lg hover:bg-navy-800 transition-all">
-              032 2 44 11 11
+            <Link href="tel:+995322420710" className="inline-block px-5 py-2.5 text-sm font-medium text-navy-200 border border-navy-700 rounded-lg hover:bg-navy-800 transition-all">
+              +995 32 2 420 710
             </Link>
           </div>
         </div>

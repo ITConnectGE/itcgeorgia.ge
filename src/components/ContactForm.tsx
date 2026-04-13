@@ -156,7 +156,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
                   <div className="space-y-4">
                     <div>
                       <p className="text-xs text-slate-400 mb-0.5">{c.phoneLabel}</p>
-                      <a href="tel:032244111" className="text-sm font-medium text-slate-900 hover:text-navy-600 transition-colors">032 2 44 11 11</a>
+                      <a href="tel:+995322420710" className="text-sm font-medium text-slate-900 hover:text-navy-600 transition-colors">+995 32 2 420 710</a>
                     </div>
                     <div>
                       <p className="text-xs text-slate-400 mb-0.5">{c.emailLabel}</p>
